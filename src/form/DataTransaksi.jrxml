@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="231faf21-2a92-475c-80e3-41a3c6313335">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="DataTransaksi" uuid="05a49c16-e489-43ec-9258-aa1b990fcf1b">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     detailtransaksi.`id_detailTransaksi` AS detailtransaksi_id_detailTransaksi,
+     detailtransaksi.`id_meja` AS detailtransaksi_id_meja,
+     detailtransaksi.`nama_pembeli` AS detailtransaksi_nama_pembeli,
+     detailtransaksi.`nama_toko` AS detailtransaksi_nama_toko,
+     detailtransaksi.`nama_menu` AS detailtransaksi_nama_menu,
+     detailtransaksi.`jumlah` AS detailtransaksi_jumlah,
+     detailtransaksi.`total_bayar` AS detailtransaksi_total_bayar,
+     detailtransaksi.`tgl_transaksi` AS detailtransaksi_tgl_transaksi
+FROM
+     `detailtransaksi` detailtransaksi]]>
+		</queryString>
+		<field name="detailtransaksi_id_detailTransaksi" class="java.lang.Integer"/>
+		<field name="detailtransaksi_id_meja" class="java.lang.Integer"/>
+		<field name="detailtransaksi_nama_pembeli" class="java.lang.String"/>
+		<field name="detailtransaksi_nama_toko" class="java.lang.String"/>
+		<field name="detailtransaksi_nama_menu" class="java.lang.String"/>
+		<field name="detailtransaksi_jumlah" class="java.lang.String"/>
+		<field name="detailtransaksi_total_bayar" class="java.lang.String"/>
+		<field name="detailtransaksi_tgl_transaksi" class="java.lang.String"/>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     detailtransaksi.`id_detailTransaksi` AS detailtransaksi_id_detailTransaksi,
+     detailtransaksi.`id_meja` AS detailtransaksi_id_meja,
+     detailtransaksi.`nama_pembeli` AS detailtransaksi_nama_pembeli,
+     detailtransaksi.`nama_toko` AS detailtransaksi_nama_toko,
+     detailtransaksi.`nama_menu` AS detailtransaksi_nama_menu,
+     detailtransaksi.`jumlah` AS detailtransaksi_jumlah,
+     detailtransaksi.`total_bayar` AS detailtransaksi_total_bayar,
+     detailtransaksi.`tgl_transaksi` AS detailtransaksi_tgl_transaksi
+FROM
+     `detailtransaksi` detailtransaksi]]>
+	</queryString>
+	<field name="detailtransaksi_id_detailTransaksi" class="java.lang.Integer"/>
+	<field name="detailtransaksi_id_meja" class="java.lang.Integer"/>
+	<field name="detailtransaksi_nama_pembeli" class="java.lang.String"/>
+	<field name="detailtransaksi_nama_toko" class="java.lang.String"/>
+	<field name="detailtransaksi_nama_menu" class="java.lang.String"/>
+	<field name="detailtransaksi_jumlah" class="java.lang.String"/>
+	<field name="detailtransaksi_total_bayar" class="java.lang.String"/>
+	<field name="detailtransaksi_tgl_transaksi" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="116" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f89a4e3e-bfb4-44f9-acda-8c754e7f3a96" x="261" y="21" width="276" height="37"/>
+				<textElement>
+					<font fontName="Serif" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN  TRANSAKSI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="14247ce1-0710-4f39-bd0d-3ee6fa21a598" x="320" y="48" width="162" height="20"/>
+				<textElement>
+					<font fontName="Serif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KALIMANTAN MEETING POINT]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="f49bb403-0a2e-47b6-b3f6-4b85e49dc821" x="41" y="0" width="177" height="78"/>
+				<imageExpression><![CDATA["C:\\Users\\ASUS\\OneDrive\\Desktop\\circle-cropped.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement uuid="4e5c2413-23e9-4aef-afa5-9fbacf455748" x="0" y="96" width="802" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="a798ff59-fe51-4e6b-85dc-026cbee36209" x="675" y="76" width="127" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="194" splitType="Stretch">
+			<elementGroup>
+				<componentElement>
+					<reportElement uuid="7605d725-b7c7-436e-b1d9-b1ca7ab662ea" key="table 1" style="table 1" x="41" y="27" width="720" height="140"/>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="DataTransaksi" uuid="9210a666-ae31-4834-ad31-583e024dab76">
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:column width="90" uuid="d3526c62-d073-4708-9ef5-80b0531a7f70">
+							<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="e4c7e4a1-a083-4b78-8732-c78b16cfbed3" x="0" y="0" width="90" height="30"/>
+									<textElement/>
+									<text><![CDATA[ID TRANSAKSI]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="1c718ba5-d534-4456-a529-82878adcaf2c" x="0" y="0" width="90" height="20"/>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{detailtransaksi_id_detailTransaksi}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="7adf0ad3-de16-483b-b49a-db22614f63de">
+							<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="1b3aae28-3086-481c-beba-f88c711351ac" x="0" y="0" width="90" height="30"/>
+									<textElement/>
+									<text><![CDATA[ID MEJA]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="5cb36a1d-9975-4571-874e-8b201e8e22d1" x="0" y="0" width="90" height="20"/>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{detailtransaksi_id_meja}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="c3f388b4-5101-4056-964a-4412e896a9f3">
+							<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="7b8eec77-f62f-46e8-8985-d3e6af637b40" x="0" y="0" width="90" height="30"/>
+									<textElement/>
+									<text><![CDATA[NAMA PEMBELI]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="7b048fd4-660b-4ea4-8561-623b18265822" x="0" y="0" width="90" height="20"/>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{detailtransaksi_nama_pembeli}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="987ae9eb-1979-434b-b11b-071e35526a60">
+							<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="757aac35-be3e-4d48-9848-dc8cf8c3db44" x="0" y="0" width="90" height="30"/>
+									<textElement/>
+									<text><![CDATA[NAMA TOKO]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="d985446f-ec50-42c7-a472-42f045b120b4" x="0" y="0" width="90" height="20"/>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{detailtransaksi_nama_toko}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="76eebeda-531c-4c5a-a823-c5fb4cef1cb1">
+							<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="8a2ad189-502f-4172-9db6-92c2d28ce54f" x="0" y="0" width="90" height="30"/>
+									<textElement/>
+									<text><![CDATA[NAMA MENU]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="fdf8ce9b-bd92-46af-a944-17a1e11fd62b" x="0" y="0" width="90" height="20"/>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{detailtransaksi_nama_menu}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="0988c3e4-fda9-47fe-a74a-5dd18321ad95">
+							<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="fad25de4-f74b-4bef-865e-e4b54ab06d90" x="0" y="0" width="90" height="30"/>
+									<textElement/>
+									<text><![CDATA[JUMLAH]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="fd0b04f0-ad36-4b76-b5e0-bfcc7a499828" x="0" y="0" width="90" height="20"/>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{detailtransaksi_jumlah}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="ed591c6f-4af3-4dd8-baf8-d4f628a4d696">
+							<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="c3a8f7ae-aae4-4cdb-99cd-41fd812c9c0d" x="0" y="0" width="90" height="30"/>
+									<textElement/>
+									<text><![CDATA[TOTAL]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="286bea21-d90c-4f65-8040-8a17e1b40921" x="0" y="0" width="90" height="20"/>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{detailtransaksi_total_bayar}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="646051b2-c3da-496e-ac35-b64dc2263aca">
+							<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="53ae5626-6838-481d-8ee7-6f38bb8e0ef8" x="0" y="0" width="90" height="30"/>
+									<textElement/>
+									<text><![CDATA[TANGGAL]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="a2b86308-54e5-4c90-bc6b-328c5a2c5921" x="0" y="0" width="90" height="20"/>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{detailtransaksi_tgl_transaksi}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+			</elementGroup>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="118" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
