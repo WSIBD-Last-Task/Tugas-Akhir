@@ -18,10 +18,19 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -67,6 +76,8 @@ public final class User extends javax.swing.JFrame {
         loadDataMeja();
         // load data nama toko untuk combo box
         loadDataNamaToko();
+        // kode transaksi otomatis
+        kodeTransaksiOtomatis();
     }
 
     public User(String no_data, String[] data) {
@@ -90,6 +101,45 @@ public final class User extends javax.swing.JFrame {
         loadDataMeja();
         // load data nama toko untuk combo box
         loadDataNamaToko();
+        // kode transaksi otomatis
+        kodeTransaksiOtomatis();
+    }
+
+    private String kode, kodeTransaksi;
+    
+    private void kodeTransaksiOtomatis() {
+        String sql = "select * from transaksi order by id_transaksi desc";
+        try {
+            stat = conn.createStatement();
+            res = stat.executeQuery(sql);
+            if (res.next()) {
+                kode = res.getString("id_transaksi").substring(1);
+                String autoNumber = "" + (Integer.parseInt(kode) + 1);
+                String nol = "";
+
+                switch (autoNumber.length()) {
+                    case 1:
+                        nol = "00";
+                        break;
+                    case 2:
+                        nol = "0";
+                        break;
+                    case 3:
+                        nol = "";
+                        break;
+                    default:
+                        break;
+                }
+
+                kodeTransaksi = "T" + nol + autoNumber;
+                System.out.println(kodeTransaksi);
+            } else {
+                kodeTransaksi = "T001";
+            }
+        } catch (NumberFormatException | SQLException e) {
+            System.out.println("tidak ada data yang masuk");
+            System.out.println(e.getMessage());
+        }
     }
 
     private void loadDataMeja() {
@@ -115,6 +165,7 @@ public final class User extends javax.swing.JFrame {
             String sql = "select * from meja where status='available'";
             stat = conn.createStatement();
             res = stat.executeQuery(sql);
+            cb_no_meja.removeAllItems();
             while (res.next()) {
                 cb_no_meja.addItem(res.getString("meja"));
             }
@@ -653,6 +704,7 @@ public final class User extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_pembayaranMousePressed
 
     private void btn_pemesananMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pemesananMousePressed
+        loadDataMeja();
         setColor(btn_pemesanan);
         resetColor(btn_dahsboard);
         resetColor(btn_pembayaran);
@@ -695,36 +747,33 @@ public final class User extends javax.swing.JFrame {
 
     private void btn_konfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_konfirmasiActionPerformed
         // TODO add your handling code here:
-        if (tbl_pesanan.getRowCount() >= 1) {
-            int conf = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ? ", "Perhatikan!", JOptionPane.YES_NO_OPTION);
-            if (conf == 0) {
-                int rows = tbl_pesanan.getRowCount();
-                Object[] os = new Object[5];
-                for (int i = 0; i < rows; i++) {
-                    os[0] = modelPesanan.getValueAt(i, 0);
-                    os[1] = modelPesanan.getValueAt(i, 1);
-                    os[2] = modelPesanan.getValueAt(i, 2);
-                    os[3] = modelPesanan.getValueAt(i, 3);
-                    os[4] = modelPesanan.getValueAt(i, 4);
-                    modelKonfirmasiPemesanan.addRow(os);
-                }
+        loadDataMeja();
+        int conf = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ? ", "Perhatikan!", JOptionPane.YES_NO_OPTION);
+        if (conf == 0) {
+            int rows = tbl_pesanan.getRowCount();
+            Object[] os = new Object[5];
+            for (int i = 0; i < rows; i++) {
+                os[0] = modelPesanan.getValueAt(i, 0);
+                os[1] = modelPesanan.getValueAt(i, 1);
+                os[2] = modelPesanan.getValueAt(i, 2);
+                os[3] = modelPesanan.getValueAt(i, 3);
+                os[4] = modelPesanan.getValueAt(i, 4);
+                modelKonfirmasiPemesanan.addRow(os);
             }
-
-            setColor(btn_pembayaran);
-            resetColor(btn_pemesanan);
-            resetColor(btn_dahsboard);
-
-            // panel
-            bodypane.removeAll();
-            bodypane.repaint();
-            bodypane.revalidate();
-
-            bodypane.add(bg_pembayaran);
-            bodypane.repaint();
-            bodypane.revalidate();
-        } else {
-            JOptionPane.showMessageDialog(this, "Pilih Menu terlebih dahulu");
         }
+
+        setColor(btn_pembayaran);
+        resetColor(btn_pemesanan);
+        resetColor(btn_dahsboard);
+
+        // panel
+        bodypane.removeAll();
+        bodypane.repaint();
+        bodypane.revalidate();
+
+        bodypane.add(bg_pembayaran);
+        bodypane.repaint();
+        bodypane.revalidate();
 
     }//GEN-LAST:event_btn_konfirmasiActionPerformed
 
@@ -770,13 +819,10 @@ public final class User extends javax.swing.JFrame {
         // TODO add your handling code here:
         int conf = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ? ", "Perhatikan!", JOptionPane.YES_NO_OPTION);
         if (conf == 0) {
-//            int i = tbl_konfirmasi_pemesanan.getSelectedRow();
-//            modelKonfirmasiPemesanan.removeRow(i);
-//            JOptionPane.showMessageDialog(this, "Pesanan dihapus");
-            modelKonfirmasiPemesanan.getDataVector().removeAllElements();
-            modelKonfirmasiPemesanan.fireTableDataChanged();
+            int i = tbl_konfirmasi_pemesanan.getSelectedRow();
+            modelKonfirmasiPemesanan.removeRow(i);
+            JOptionPane.showMessageDialog(this, "Pesanan dihapus");
         }
-        
     }//GEN-LAST:event_btn_hapus_konfirmasi_pemesananActionPerformed
 
     private void btn_konfirmasi_pemesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_konfirmasi_pemesananActionPerformed
@@ -785,7 +831,12 @@ public final class User extends javax.swing.JFrame {
             int rows = modelKonfirmasiPemesanan.getRowCount();
             String sql = "insert into detailtransaksi(id_meja, nama_pembeli, nama_toko, nama_menu,"
                     + "jumlah, total_bayar, tgl_transaksi) values(?,?,?,?,?,?,?)";
+            String sql2 = "insert into transaksi(id_transaksi, id_detailTransaksi, total_bayar, tgl_transaksi) "
+                    + "values(?,?,?,?)";
             PreparedStatement pst = conn.prepareStatement(sql);
+            PreparedStatement pst2 = conn.prepareStatement(sql2);
+            
+            kodeTransaksiOtomatis();
             // insert all data on table;
             for (int i = 0; i < rows; i++) {
                 int id_meja = Integer.parseInt(cb_no_meja.getSelectedItem().toString());
@@ -798,6 +849,14 @@ public final class User extends javax.swing.JFrame {
                 Date d = new Date();
                 String tgl_transaksi = date.format(d);
 
+                String sql3 = "select * from detailtransaksi order by id_detailTransaksi desc";
+                stat = conn.createStatement();
+                res = stat.executeQuery(sql3);
+                int kodet = 0;
+                if (res.next()) {
+                    kodet = Integer.parseInt(res.getString("id_detailTransaksi"));
+                }
+                
                 // prepare query
                 pst.setInt(1, id_meja);
                 pst.setString(2, nama_pembeli);
@@ -806,27 +865,54 @@ public final class User extends javax.swing.JFrame {
                 pst.setString(5, String.valueOf(jumlah));
                 pst.setString(6, String.valueOf(totalBayar));
                 pst.setString(7, tgl_transaksi);
+                
+                // sql2 
+                pst2.setString(1, kodeTransaksi);
+                pst2.setInt(2, (kodet+1));
+                pst2.setString(3, String.valueOf(totalBayar));
+                pst2.setString(4, tgl_transaksi);
 
                 pst.execute();
+                pst2.execute();
             }
-            
             modelKonfirmasiPemesanan.getDataVector().removeAllElements();
             modelKonfirmasiPemesanan.fireTableDataChanged();
+            modelPesanan.getDataVector().removeAllElements();
+            modelPesanan.fireTableDataChanged();
 
             JOptionPane.showMessageDialog(this, "Pemesanan Berhasil!");
             lbl_total_bayar.setText("0");
             cb_no_meja.setSelectedIndex(0);
             txt_nama_pembeli.setText("");
+            loadDataMeja();
 
         } catch (SQLException | NumberFormatException e) {
             System.out.println(e.getMessage());
         }
+
         try {
             String sql = "update meja set status='not available' where meja='" + cb_no_meja.getSelectedItem().toString() + "'";
             stat = conn.createStatement();
             stat.executeUpdate(sql);
         } catch (SQLException e) {
 
+        }
+        
+        //nota
+        try {
+            JasperReport jr;
+            JasperPrint jp;
+
+            String file = "E:\\WSIBD_nisa_COBA LAGI\\WSIBD-LAST-TASK-main\\src\\report\\struk.jrxml";
+
+            HashMap hash = new HashMap();
+            hash.put("id_transaksi", kodeTransaksi);
+            
+            jr = JasperCompileManager.compileReport(file);
+            jp = JasperFillManager.fillReport(jr, hash, conn);
+            JasperViewer.viewReport(jp);
+        } catch (JRException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_konfirmasi_pemesananActionPerformed
 
