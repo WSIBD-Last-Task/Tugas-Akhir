@@ -23,12 +23,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -94,7 +104,7 @@ public final class Admin extends javax.swing.JFrame {
                 o[6] = res.getString("tgl_transaksi");
                 modelTransaksi.addRow(o);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
     }
 
@@ -160,6 +170,9 @@ public final class Admin extends javax.swing.JFrame {
         btn_tambah = new javax.swing.JButton();
         btn_edit_transaksi = new javax.swing.JButton();
         btn_hapus_transaksi = new javax.swing.JButton();
+        dc_tanggal_rekap = new com.toedter.calendar.JDateChooser();
+        btn_rekap = new javax.swing.JButton();
+        btn_rekap1 = new javax.swing.JButton();
         bg_meja = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -596,24 +609,58 @@ public final class Admin extends javax.swing.JFrame {
 
         btn_filter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_filter_20px.png"))); // NOI18N
         btn_filter.setText("Filter");
+        btn_filter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_filterActionPerformed(evt);
+            }
+        });
         bg_transaksi.add(btn_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, 110, 40));
 
         btn_cetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_print_20px.png"))); // NOI18N
         btn_cetak.setText("Cetak Laporan");
-        bg_transaksi.add(btn_cetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 210, 40));
-        bg_transaksi.add(txt_keyword, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 310, 40));
+        btn_cetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cetakActionPerformed(evt);
+            }
+        });
+        bg_transaksi.add(btn_cetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 570, 160, 40));
+        bg_transaksi.add(txt_keyword, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 200, 40));
 
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_add_20px.png"))); // NOI18N
         btn_tambah.setText("Tambah");
-        bg_transaksi.add(btn_tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, 130, 40));
+        bg_transaksi.add(btn_tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 570, 130, 40));
 
         btn_edit_transaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_edit_20px.png"))); // NOI18N
         btn_edit_transaksi.setText("Edit");
-        bg_transaksi.add(btn_edit_transaksi, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 570, 100, 40));
+        bg_transaksi.add(btn_edit_transaksi, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 570, 100, 40));
 
         btn_hapus_transaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_delete_20px.png"))); // NOI18N
         btn_hapus_transaksi.setText("Hapus");
-        bg_transaksi.add(btn_hapus_transaksi, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 570, 100, 40));
+        bg_transaksi.add(btn_hapus_transaksi, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 570, 100, 40));
+
+        dc_tanggal_rekap.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                dc_tanggal_rekapPropertyChange(evt);
+            }
+        });
+        bg_transaksi.add(dc_tanggal_rekap, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 190, 40));
+
+        btn_rekap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_filter_20px.png"))); // NOI18N
+        btn_rekap.setText("Rekap");
+        btn_rekap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_rekapActionPerformed(evt);
+            }
+        });
+        bg_transaksi.add(btn_rekap, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 110, 40));
+
+        btn_rekap1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_sync_25px.png"))); // NOI18N
+        btn_rekap1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_rekap1ActionPerformed(evt);
+            }
+        });
+        bg_transaksi.add(btn_rekap1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 60, 40));
 
         bodypane.add(bg_transaksi, "card4");
 
@@ -1264,6 +1311,94 @@ public final class Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_tambah_mejaActionPerformed
 
+    private void btn_cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetakActionPerformed
+        // TODO add your handling code here:
+        //nota
+//            try {
+//                JasperReport jr;
+//                JasperPrint jp;
+//
+//                String file = "E:\\WSIBD_nisa_COBA LAGI\\WSIBD-LAST-TASK-main\\src\\report\\rekapPenjualan.jrxml";
+//
+//                HashMap hash = new HashMap();
+//                hash.put("tgl_transaksi", tanggal_rekap);
+//
+//                jr = JasperCompileManager.compileReport(file);
+//                jp = JasperFillManager.fillReport(jr, hash, conn);
+//                JasperViewer.viewReport(jp);
+//            } catch (JRException ex) {
+//                Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+    }//GEN-LAST:event_btn_cetakActionPerformed
+
+    private void btn_filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_filterActionPerformed
+        // TODO add your handling code here:
+        String sql = "select * from detailtransaksi where nama_pembeli LIKE '%"+txt_keyword.getText()+"%' OR nama_toko LIKE '%"+txt_keyword.getText()+"%'";
+        modelTransaksi.getDataVector().removeAllElements();
+        modelTransaksi.fireTableDataChanged();
+        try {
+            Statement stat = conn.prepareStatement(sql);
+            res = stat.executeQuery(sql);
+            while (res.next()) {
+                Object[] o = new Object[7];
+                o[0] = res.getString("id_detailTransaksi");
+                o[1] = res.getString("nama_pembeli");
+                o[2] = res.getString("nama_toko");
+                o[3] = res.getString("nama_menu");
+                o[4] = res.getString("jumlah");
+                o[5] = res.getString("total_bayar");
+                o[6] = res.getString("tgl_transaksi");
+                modelTransaksi.addRow(o);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Tidak ada data");
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btn_filterActionPerformed
+
+    private void btn_rekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rekapActionPerformed
+        // TODO add your handling code here:
+        String sql = "select * from detailtransaksi where tgl_transaksi='"+tanggal_rekap+"'";
+        modelTransaksi.getDataVector().removeAllElements();
+        modelTransaksi.fireTableDataChanged();
+        try {
+            Statement stat = conn.prepareStatement(sql);
+            res = stat.executeQuery(sql);
+            while (res.next()) {
+                Object[] o = new Object[7];
+                o[0] = res.getString("id_detailTransaksi");
+                o[1] = res.getString("nama_pembeli");
+                o[2] = res.getString("nama_toko");
+                o[3] = res.getString("nama_menu");
+                o[4] = res.getString("jumlah");
+                o[5] = res.getString("total_bayar");
+                o[6] = res.getString("tgl_transaksi");
+                modelTransaksi.addRow(o);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Tidak ada data");
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btn_rekapActionPerformed
+    private String tanggal_rekap;
+    private void dc_tanggal_rekapPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dc_tanggal_rekapPropertyChange
+        // TODO add your handling code here:
+        try {
+            if (dc_tanggal_rekap.getDate() != null) {
+                String pattern = "dd/MM/yyyy";
+                SimpleDateFormat format = new SimpleDateFormat(pattern);
+                tanggal_rekap = String.valueOf(format.format(dc_tanggal_rekap.getDate()));
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_dc_tanggal_rekapPropertyChange
+
+    private void btn_rekap1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rekap1ActionPerformed
+        // TODO add your handling code here:
+        loadDataTransaksi();
+        dc_tanggal_rekap.setCalendar(null);
+    }//GEN-LAST:event_btn_rekap1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1321,6 +1456,8 @@ public final class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btn_hapus_menu;
     private javax.swing.JButton btn_hapus_transaksi;
     private javax.swing.JLabel btn_refresh;
+    private javax.swing.JButton btn_rekap;
+    private javax.swing.JButton btn_rekap1;
     private javax.swing.JButton btn_tambah;
     private javax.swing.JButton btn_tambah_meja;
     private javax.swing.JButton btn_tambah_menu;
@@ -1330,6 +1467,7 @@ public final class Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_kategori_menu;
     private javax.swing.JComboBox<String> cb_nama_toko;
     private javax.swing.JComboBox<String> cb_status_meja;
+    private com.toedter.calendar.JDateChooser dc_tanggal_rekap;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
