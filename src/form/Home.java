@@ -23,7 +23,11 @@ public class Home extends javax.swing.JFrame {
         // cek koneksi
         conn = koneksi.Koneksi.cekKoneksi();
     }
-
+    
+    
+    
+        
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,11 +40,10 @@ public class Home extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btn_order = new javax.swing.JLabel();
-        txt_masuk = new javax.swing.JLabel();
-        txt_daftar = new javax.swing.JLabel();
         bg_home = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,36 +67,6 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel1.add(btn_order, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 610, -1, -1));
 
-        txt_masuk.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_masuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MASUK_home.png"))); // NOI18N
-        txt_masuk.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_masukMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txt_masukMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                txt_masukMouseExited(evt);
-            }
-        });
-        jPanel1.add(txt_masuk, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, -1));
-
-        txt_daftar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_daftar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/DAFTAR_home.png"))); // NOI18N
-        txt_daftar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_daftarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txt_daftarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                txt_daftarMouseExited(evt);
-            }
-        });
-        jPanel1.add(txt_daftar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
-
         bg_home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bg_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SelamatDatang.png"))); // NOI18N
         jPanel1.add(bg_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 790));
@@ -102,11 +75,11 @@ public class Home extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1255, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 774, Short.MAX_VALUE)
         );
 
         pack();
@@ -131,44 +104,6 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         btn_order.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_order.png"))); // NOI18N
     }//GEN-LAST:event_btn_orderMouseExited
-
-    private void txt_masukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_masukMouseClicked
-        // TODO add your handling code here:
-        Login login = new Login();
-        login.setVisible(true);
-        login.pack();
-        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_txt_masukMouseClicked
-
-    private void txt_masukMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_masukMouseEntered
-        // TODO add your handling code here:
-        txt_masuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MASUK_home_orange.png"))); // NOI18N
-    }//GEN-LAST:event_txt_masukMouseEntered
-
-    private void txt_masukMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_masukMouseExited
-        // TODO add your handling code here:
-        txt_masuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MASUK_home.png"))); // NOI18N
-    }//GEN-LAST:event_txt_masukMouseExited
-
-    private void txt_daftarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_daftarMouseClicked
-        // TODO add your handling code here:
-        Daftar daftar = new Daftar();
-        daftar.setVisible(true);
-        daftar.pack();
-        daftar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_txt_daftarMouseClicked
-
-    private void txt_daftarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_daftarMouseEntered
-        // TODO add your handling code here:
-        txt_daftar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/DAFTAR_home_orange.png"))); // NOI18N
-    }//GEN-LAST:event_txt_daftarMouseEntered
-
-    private void txt_daftarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_daftarMouseExited
-        // TODO add your handling code here:
-        txt_daftar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/DAFTAR_home.png"))); // NOI18N
-    }//GEN-LAST:event_txt_daftarMouseExited
 
     /**
      * @param args the command line arguments
@@ -204,7 +139,5 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel btn_order;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel txt_daftar;
-    private javax.swing.JLabel txt_masuk;
     // End of variables declaration//GEN-END:variables
 }
