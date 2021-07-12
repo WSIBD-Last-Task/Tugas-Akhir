@@ -106,7 +106,7 @@ public final class User extends javax.swing.JFrame {
     }
 
     private String kode, kodeTransaksi;
-    
+
     private void kodeTransaksiOtomatis() {
         String sql = "select * from transaksi order by id_transaksi desc";
         try {
@@ -194,6 +194,9 @@ public final class User extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btn_data_menu1 = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
         bodypane = new javax.swing.JPanel();
         bg_dashboard = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -232,9 +235,9 @@ public final class User extends javax.swing.JFrame {
         txt_nama_pembeli = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        btn_detail_pemesanan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -359,6 +362,43 @@ public final class User extends javax.swing.JFrame {
         jLabel2.setText("KMP");
         sidepane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 290, -1));
 
+        btn_data_menu1.setBackground(new java.awt.Color(64, 43, 100));
+        btn_data_menu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_data_menu1MousePressed(evt);
+            }
+        });
+
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_logout_rounded_left_25px.png"))); // NOI18N
+
+        jLabel41.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel41.setText("Logout");
+
+        javax.swing.GroupLayout btn_data_menu1Layout = new javax.swing.GroupLayout(btn_data_menu1);
+        btn_data_menu1.setLayout(btn_data_menu1Layout);
+        btn_data_menu1Layout.setHorizontalGroup(
+            btn_data_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_data_menu1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+        btn_data_menu1Layout.setVerticalGroup(
+            btn_data_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_data_menu1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel41, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        sidepane.add(btn_data_menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, -1, -1));
+
         main.add(sidepane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 630));
 
         bodypane.setBackground(new java.awt.Color(255, 255, 255));
@@ -383,15 +423,15 @@ public final class User extends javax.swing.JFrame {
 
         bg_dashboard.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 810, 127));
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(122, 72, 221));
         jLabel16.setText("\"Makan Dan Minum Dengan Bahagia\"");
-        bg_dashboard.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
+        bg_dashboard.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
 
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(122, 72, 221));
         jLabel20.setText("Kalimantan Meeting Point");
-        bg_dashboard.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, -1));
+        bg_dashboard.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
@@ -600,7 +640,7 @@ public final class User extends javax.swing.JFrame {
                 btn_hapus_konfirmasi_pemesananActionPerformed(evt);
             }
         });
-        bg_pembayaran.add(btn_hapus_konfirmasi_pemesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 250, -1, 40));
+        bg_pembayaran.add(btn_hapus_konfirmasi_pemesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 240, 50, 40));
 
         btn_konfirmasi_pemesanan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_konfirmasi_pemesanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_refund_25px_1.png"))); // NOI18N
@@ -611,7 +651,7 @@ public final class User extends javax.swing.JFrame {
                 btn_konfirmasi_pemesananActionPerformed(evt);
             }
         });
-        bg_pembayaran.add(btn_konfirmasi_pemesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 293, 270, 40));
+        bg_pembayaran.add(btn_konfirmasi_pemesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 270, 40));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel14.setText("Pembeli");
@@ -631,16 +671,6 @@ public final class User extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel22.setText("TOTAL BAYAR : ");
         bg_pembayaran.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, -1, -1));
-
-        btn_detail_pemesanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_search_property_25px.png"))); // NOI18N
-        btn_detail_pemesanan.setToolTipText("lihat pesanan");
-        btn_detail_pemesanan.setAlignmentY(0.0F);
-        btn_detail_pemesanan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_detail_pemesananActionPerformed(evt);
-            }
-        });
-        bg_pembayaran.add(btn_detail_pemesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 293, -1, 40));
 
         bodypane.add(bg_pembayaran, "card2");
 
@@ -748,32 +778,36 @@ public final class User extends javax.swing.JFrame {
     private void btn_konfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_konfirmasiActionPerformed
         // TODO add your handling code here:
         loadDataMeja();
-        int conf = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ? ", "Perhatikan!", JOptionPane.YES_NO_OPTION);
-        if (conf == 0) {
-            int rows = tbl_pesanan.getRowCount();
-            Object[] os = new Object[5];
-            for (int i = 0; i < rows; i++) {
-                os[0] = modelPesanan.getValueAt(i, 0);
-                os[1] = modelPesanan.getValueAt(i, 1);
-                os[2] = modelPesanan.getValueAt(i, 2);
-                os[3] = modelPesanan.getValueAt(i, 3);
-                os[4] = modelPesanan.getValueAt(i, 4);
-                modelKonfirmasiPemesanan.addRow(os);
+        if (tbl_pesanan.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "Lakukan pemesanan terlebih dahulu");
+        } else {
+            int conf = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ? ", "Perhatikan!", JOptionPane.YES_NO_OPTION);
+            if (conf == 0) {
+                int rows = tbl_pesanan.getRowCount();
+                Object[] os = new Object[5];
+                for (int i = 0; i < rows; i++) {
+                    os[0] = modelPesanan.getValueAt(i, 0);
+                    os[1] = modelPesanan.getValueAt(i, 1);
+                    os[2] = modelPesanan.getValueAt(i, 2);
+                    os[3] = modelPesanan.getValueAt(i, 3);
+                    os[4] = modelPesanan.getValueAt(i, 4);
+                    modelKonfirmasiPemesanan.addRow(os);
+                }
             }
+
+            setColor(btn_pembayaran);
+            resetColor(btn_pemesanan);
+            resetColor(btn_dahsboard);
+
+            // panel
+            bodypane.removeAll();
+            bodypane.repaint();
+            bodypane.revalidate();
+
+            bodypane.add(bg_pembayaran);
+            bodypane.repaint();
+            bodypane.revalidate();
         }
-
-        setColor(btn_pembayaran);
-        resetColor(btn_pemesanan);
-        resetColor(btn_dahsboard);
-
-        // panel
-        bodypane.removeAll();
-        bodypane.repaint();
-        bodypane.revalidate();
-
-        bodypane.add(bg_pembayaran);
-        bodypane.repaint();
-        bodypane.revalidate();
 
     }//GEN-LAST:event_btn_konfirmasiActionPerformed
 
@@ -817,108 +851,121 @@ public final class User extends javax.swing.JFrame {
 
     private void btn_hapus_konfirmasi_pemesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapus_konfirmasi_pemesananActionPerformed
         // TODO add your handling code here:
-        int conf = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ? ", "Perhatikan!", JOptionPane.YES_NO_OPTION);
-        if (conf == 0) {
-            int i = tbl_konfirmasi_pemesanan.getSelectedRow();
-            modelKonfirmasiPemesanan.removeRow(i);
-            JOptionPane.showMessageDialog(this, "Pesanan dihapus");
+        int i = tbl_konfirmasi_pemesanan.getSelectedRow();
+        if (i < 0) {
+            JOptionPane.showMessageDialog(this, "Pilih pesanan yang ingin dihapus!");
+        } else {
+            int conf = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ? ", "Perhatikan!", JOptionPane.YES_NO_OPTION);
+            if (conf == 0) {
+                modelKonfirmasiPemesanan.removeRow(i);
+                JOptionPane.showMessageDialog(this, "Pesanan dihapus");
+            }
         }
     }//GEN-LAST:event_btn_hapus_konfirmasi_pemesananActionPerformed
 
     private void btn_konfirmasi_pemesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_konfirmasi_pemesananActionPerformed
         // TODO add your handling code here:
-        try {
-            int rows = modelKonfirmasiPemesanan.getRowCount();
-            String sql = "insert into detailtransaksi(id_meja, nama_pembeli, nama_toko, nama_menu,"
-                    + "jumlah, total_bayar, tgl_transaksi) values(?,?,?,?,?,?,?)";
-            String sql2 = "insert into transaksi(id_transaksi, id_detailTransaksi, total_bayar, tgl_transaksi) "
-                    + "values(?,?,?,?)";
-            PreparedStatement pst = conn.prepareStatement(sql);
-            PreparedStatement pst2 = conn.prepareStatement(sql2);
-            
-            kodeTransaksiOtomatis();
-            // insert all data on table;
-            for (int i = 0; i < rows; i++) {
-                int id_meja = Integer.parseInt(cb_no_meja.getSelectedItem().toString());
-                String nama_pembeli = txt_nama_pembeli.getText();
-                String nama_toko = modelKonfirmasiPemesanan.getValueAt(i, 0).toString();
-                String nama_menu = modelKonfirmasiPemesanan.getValueAt(i, 1).toString();
-                int jumlah = Integer.parseInt((String) modelKonfirmasiPemesanan.getValueAt(i, 3));
-                int totalBayar = Integer.parseInt((String) modelKonfirmasiPemesanan.getValueAt(i, 4));
-                SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
-                Date d = new Date();
-                String tgl_transaksi = date.format(d);
+        if (txt_nama_pembeli.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Isi nama pembeli terlebih dahulu");
+        } else {
+            try {
+                int rows = modelKonfirmasiPemesanan.getRowCount();
+                String sql = "insert into detailtransaksi(id_meja, nama_pembeli, nama_toko, nama_menu,"
+                        + "jumlah, total_bayar, tgl_transaksi) values(?,?,?,?,?,?,?)";
+                String sql2 = "insert into transaksi(id_transaksi, id_detailTransaksi, total_bayar, tgl_transaksi) "
+                        + "values(?,?,?,?)";
+                PreparedStatement pst = conn.prepareStatement(sql);
+                PreparedStatement pst2 = conn.prepareStatement(sql2);
 
-                String sql3 = "select * from detailtransaksi order by id_detailTransaksi desc";
-                stat = conn.createStatement();
-                res = stat.executeQuery(sql3);
-                int kodet = 0;
-                if (res.next()) {
-                    kodet = Integer.parseInt(res.getString("id_detailTransaksi"));
+                kodeTransaksiOtomatis();
+                // insert all data on table;
+                for (int i = 0; i < rows; i++) {
+                    int id_meja = Integer.parseInt(cb_no_meja.getSelectedItem().toString());
+                    String nama_pembeli = txt_nama_pembeli.getText();
+                    String nama_toko = modelKonfirmasiPemesanan.getValueAt(i, 0).toString();
+                    String nama_menu = modelKonfirmasiPemesanan.getValueAt(i, 1).toString();
+                    int jumlah = Integer.parseInt((String) modelKonfirmasiPemesanan.getValueAt(i, 3));
+                    int totalBayar = Integer.parseInt((String) modelKonfirmasiPemesanan.getValueAt(i, 4));
+                    SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+                    Date d = new Date();
+                    String tgl_transaksi = date.format(d);
+
+                    String sql3 = "select * from detailtransaksi order by id_detailTransaksi desc";
+                    stat = conn.createStatement();
+                    res = stat.executeQuery(sql3);
+                    int kodet = 0;
+                    if (res.next()) {
+                        kodet = Integer.parseInt(res.getString("id_detailTransaksi"));
+                    }
+
+                    // prepare query
+                    pst.setInt(1, id_meja);
+                    pst.setString(2, nama_pembeli);
+                    pst.setString(3, nama_toko);
+                    pst.setString(4, nama_menu);
+                    pst.setString(5, String.valueOf(jumlah));
+                    pst.setString(6, String.valueOf(totalBayar));
+                    pst.setString(7, tgl_transaksi);
+
+                    // sql2 
+                    pst2.setString(1, kodeTransaksi);
+                    pst2.setInt(2, (kodet + 1));
+                    pst2.setString(3, String.valueOf(totalBayar));
+                    pst2.setString(4, tgl_transaksi);
+
+                    pst.execute();
+                    pst2.execute();
                 }
-                
-                // prepare query
-                pst.setInt(1, id_meja);
-                pst.setString(2, nama_pembeli);
-                pst.setString(3, nama_toko);
-                pst.setString(4, nama_menu);
-                pst.setString(5, String.valueOf(jumlah));
-                pst.setString(6, String.valueOf(totalBayar));
-                pst.setString(7, tgl_transaksi);
-                
-                // sql2 
-                pst2.setString(1, kodeTransaksi);
-                pst2.setInt(2, (kodet+1));
-                pst2.setString(3, String.valueOf(totalBayar));
-                pst2.setString(4, tgl_transaksi);
+                modelKonfirmasiPemesanan.getDataVector().removeAllElements();
+                modelKonfirmasiPemesanan.fireTableDataChanged();
+                modelPesanan.getDataVector().removeAllElements();
+                modelPesanan.fireTableDataChanged();
 
-                pst.execute();
-                pst2.execute();
+                JOptionPane.showMessageDialog(this, "Pemesanan Berhasil!");
+                lbl_total_bayar.setText("0");
+                cb_no_meja.setSelectedIndex(0);
+                txt_nama_pembeli.setText("");
+                loadDataMeja();
+
+            } catch (SQLException | NumberFormatException e) {
+                System.out.println(e.getMessage());
             }
-            modelKonfirmasiPemesanan.getDataVector().removeAllElements();
-            modelKonfirmasiPemesanan.fireTableDataChanged();
-            modelPesanan.getDataVector().removeAllElements();
-            modelPesanan.fireTableDataChanged();
 
-            JOptionPane.showMessageDialog(this, "Pemesanan Berhasil!");
-            lbl_total_bayar.setText("0");
-            cb_no_meja.setSelectedIndex(0);
-            txt_nama_pembeli.setText("");
-            loadDataMeja();
+            try {
+                String sql = "update meja set status='not available' where meja='" + cb_no_meja.getSelectedItem().toString() + "'";
+                stat = conn.createStatement();
+                stat.executeUpdate(sql);
+            } catch (SQLException e) {
 
-        } catch (SQLException | NumberFormatException e) {
-            System.out.println(e.getMessage());
-        }
+            }
 
-        try {
-            String sql = "update meja set status='not available' where meja='" + cb_no_meja.getSelectedItem().toString() + "'";
-            stat = conn.createStatement();
-            stat.executeUpdate(sql);
-        } catch (SQLException e) {
+            //nota
+            try {
+                JasperReport jr;
+                JasperPrint jp;
 
-        }
-        
-        //nota
-        try {
-            JasperReport jr;
-            JasperPrint jp;
+                String file = "E:\\WSIBD_nisa_COBA LAGI\\WSIBD-LAST-TASK-main\\src\\report\\struk.jrxml";
 
-            String file = "E:\\WSIBD_nisa_COBA LAGI\\WSIBD-LAST-TASK-main\\src\\report\\struk.jrxml";
+                HashMap hash = new HashMap();
+                hash.put("id_transaksi", kodeTransaksi);
 
-            HashMap hash = new HashMap();
-            hash.put("id_transaksi", kodeTransaksi);
-            
-            jr = JasperCompileManager.compileReport(file);
-            jp = JasperFillManager.fillReport(jr, hash, conn);
-            JasperViewer.viewReport(jp);
-        } catch (JRException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+                jr = JasperCompileManager.compileReport(file);
+                jp = JasperFillManager.fillReport(jr, hash, conn);
+                JasperViewer.viewReport(jp, false);
+            } catch (JRException ex) {
+                Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btn_konfirmasi_pemesananActionPerformed
 
-    private void btn_detail_pemesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_detail_pemesananActionPerformed
+    private void btn_data_menu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_data_menu1MousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_detail_pemesananActionPerformed
+        int i = JOptionPane.showConfirmDialog(this, "Apakah kamu ingin keluar ?", "Mau kemana", JOptionPane.YES_NO_OPTION);
+        if (i == 0) {
+            new Home().show();
+            this.dispose();
+        }
+    }//GEN-LAST:event_btn_data_menu1MousePressed
 
     /**
      * @param args the command line arguments
@@ -955,7 +1002,7 @@ public final class User extends javax.swing.JFrame {
     private javax.swing.JPanel bg_pemesanan;
     private javax.swing.JPanel bodypane;
     private javax.swing.JPanel btn_dahsboard;
-    private javax.swing.JButton btn_detail_pemesanan;
+    private javax.swing.JPanel btn_data_menu1;
     private javax.swing.JButton btn_hapus_konfirmasi_pemesanan;
     private javax.swing.JButton btn_hapus_list;
     private javax.swing.JButton btn_konfirmasi;
@@ -979,7 +1026,9 @@ public final class User extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
