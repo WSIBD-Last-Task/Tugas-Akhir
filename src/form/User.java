@@ -863,6 +863,7 @@ public final class User extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_hapus_konfirmasi_pemesananActionPerformed
 
+    static int no_meja_rev;
     private void btn_konfirmasi_pemesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_konfirmasi_pemesananActionPerformed
         // TODO add your handling code here:
         if (txt_nama_pembeli.getText().length() == 0) {
@@ -880,7 +881,7 @@ public final class User extends javax.swing.JFrame {
                 kodeTransaksiOtomatis();
                 // insert all data on table;
                 for (int i = 0; i < rows; i++) {
-                    int id_meja = Integer.parseInt(cb_no_meja.getSelectedItem().toString());
+                    no_meja_rev = Integer.parseInt(cb_no_meja.getSelectedItem().toString());
                     String nama_pembeli = txt_nama_pembeli.getText();
                     String nama_toko = modelKonfirmasiPemesanan.getValueAt(i, 0).toString();
                     String nama_menu = modelKonfirmasiPemesanan.getValueAt(i, 1).toString();
@@ -899,7 +900,7 @@ public final class User extends javax.swing.JFrame {
                     }
 
                     // prepare query
-                    pst.setInt(1, id_meja);
+                    pst.setInt(1, no_meja_rev);
                     pst.setString(2, nama_pembeli);
                     pst.setString(3, nama_toko);
                     pst.setString(4, nama_menu);
@@ -932,7 +933,7 @@ public final class User extends javax.swing.JFrame {
             }
 
             try {
-                String sql = "update meja set status='not available' where meja='" + cb_no_meja.getSelectedItem().toString() + "'";
+                String sql = "update meja set status='not available' where meja='" + no_meja_rev + "'";
                 stat = conn.createStatement();
                 stat.executeUpdate(sql);
             } catch (SQLException e) {
