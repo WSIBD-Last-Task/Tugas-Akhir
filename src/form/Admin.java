@@ -148,7 +148,6 @@ public final class Admin extends javax.swing.JFrame {
         btn_data_toko = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         btn_dahsboard = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -158,6 +157,7 @@ public final class Admin extends javax.swing.JFrame {
         btn_data_menu1 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
         bodypane = new javax.swing.JPanel();
         bg_dashboard = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -206,14 +206,11 @@ public final class Admin extends javax.swing.JFrame {
         btn_filter = new javax.swing.JButton();
         btn_cetak = new javax.swing.JButton();
         txt_keyword = new javax.swing.JTextField();
-        dc_tanggal_rekap = new com.toedter.calendar.JDateChooser();
-        btn_rekap = new javax.swing.JButton();
         btn_rekap1 = new javax.swing.JButton();
         dc_tanggal_sampai = new com.toedter.calendar.JDateChooser();
         dc_tanggal_dari = new com.toedter.calendar.JDateChooser();
         jLabel40 = new javax.swing.JLabel();
         btn_rekap_range = new javax.swing.JButton();
-        btn_rekap2 = new javax.swing.JButton();
         bg_meja = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -250,7 +247,6 @@ public final class Admin extends javax.swing.JFrame {
         bg_profil_menu = new javax.swing.JLabel();
         btn_upload_menu = new javax.swing.JButton();
         txt_path_menu = new javax.swing.JTextField();
-        btn_refresh = new javax.swing.JLabel();
 
         txt_id_menu.setText("jTextField1");
 
@@ -264,6 +260,7 @@ public final class Admin extends javax.swing.JFrame {
         sidepane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_data_menu.setBackground(new java.awt.Color(64, 43, 100));
+        btn_data_menu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_data_menu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_data_menuMousePressed(evt);
@@ -301,6 +298,7 @@ public final class Admin extends javax.swing.JFrame {
         sidepane.add(btn_data_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, -1, -1));
 
         btn_data_meja.setBackground(new java.awt.Color(64, 43, 100));
+        btn_data_meja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_data_meja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_data_mejaMousePressed(evt);
@@ -338,6 +336,7 @@ public final class Admin extends javax.swing.JFrame {
         sidepane.add(btn_data_meja, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, -1, -1));
 
         btn_data_toko.setBackground(new java.awt.Color(64, 43, 100));
+        btn_data_toko.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_data_toko.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_data_tokoMousePressed(evt);
@@ -374,14 +373,8 @@ public final class Admin extends javax.swing.JFrame {
 
         sidepane.add(btn_data_toko, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_food_bar_50px_1.png"))); // NOI18N
-        jLabel2.setText("KMP");
-        sidepane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 290, -1));
-
         btn_dahsboard.setBackground(new java.awt.Color(85, 65, 118));
+        btn_dahsboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_dahsboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_dahsboardMousePressed(evt);
@@ -419,6 +412,7 @@ public final class Admin extends javax.swing.JFrame {
         sidepane.add(btn_dahsboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
 
         btn_data_transaksi.setBackground(new java.awt.Color(64, 43, 100));
+        btn_data_transaksi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_data_transaksi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_data_transaksiMousePressed(evt);
@@ -456,6 +450,7 @@ public final class Admin extends javax.swing.JFrame {
         sidepane.add(btn_data_transaksi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, -1, -1));
 
         btn_data_menu1.setBackground(new java.awt.Color(64, 43, 100));
+        btn_data_menu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_data_menu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_data_menu1MousePressed(evt);
@@ -492,6 +487,9 @@ public final class Admin extends javax.swing.JFrame {
 
         sidepane.add(btn_data_menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, -1, -1));
 
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo_baru-removebg-preview.png"))); // NOI18N
+        sidepane.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 190, 70));
+
         main.add(sidepane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 630));
 
         bodypane.setBackground(new java.awt.Color(255, 255, 255));
@@ -501,7 +499,7 @@ public final class Admin extends javax.swing.JFrame {
         bg_dashboard.setPreferredSize(new java.awt.Dimension(1100, 630));
         bg_dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(122, 72, 221));
+        jPanel1.setBackground(new java.awt.Color(64, 43, 100));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -669,7 +667,7 @@ public final class Admin extends javax.swing.JFrame {
         tbl_data_transaksi_per_toko.setGridColor(new java.awt.Color(255, 255, 255));
         tbl_data_transaksi_per_toko.setRowHeight(25);
         tbl_data_transaksi_per_toko.setRowMargin(5);
-        tbl_data_transaksi_per_toko.setSelectionBackground(new java.awt.Color(122, 72, 221));
+        tbl_data_transaksi_per_toko.setSelectionBackground(new java.awt.Color(64, 43, 100));
         tbl_data_transaksi_per_toko.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_data_transaksi_per_tokoMouseClicked(evt);
@@ -694,7 +692,7 @@ public final class Admin extends javax.swing.JFrame {
         bg_toko.setPreferredSize(new java.awt.Dimension(1100, 630));
         bg_toko.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(122, 72, 221));
+        jPanel2.setBackground(new java.awt.Color(64, 43, 100));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -741,7 +739,7 @@ public final class Admin extends javax.swing.JFrame {
         tbl_data_toko.setGridColor(new java.awt.Color(255, 255, 255));
         tbl_data_toko.setRowHeight(25);
         tbl_data_toko.setRowMargin(5);
-        tbl_data_toko.setSelectionBackground(new java.awt.Color(122, 72, 221));
+        tbl_data_toko.setSelectionBackground(new java.awt.Color(64, 43, 100));
         tbl_data_toko.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_data_tokoMouseClicked(evt);
@@ -817,7 +815,7 @@ public final class Admin extends javax.swing.JFrame {
         bg_transaksi.setPreferredSize(new java.awt.Dimension(1100, 630));
         bg_transaksi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(122, 72, 221));
+        jPanel3.setBackground(new java.awt.Color(64, 43, 100));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -849,7 +847,7 @@ public final class Admin extends javax.swing.JFrame {
         tbl_transaksi.setGridColor(new java.awt.Color(255, 255, 255));
         tbl_transaksi.setRowHeight(25);
         tbl_transaksi.setRowMargin(5);
-        tbl_transaksi.setSelectionBackground(new java.awt.Color(122, 72, 221));
+        tbl_transaksi.setSelectionBackground(new java.awt.Color(64, 43, 100));
         jScrollPane3.setViewportView(tbl_transaksi);
         if (tbl_transaksi.getColumnModel().getColumnCount() > 0) {
             tbl_transaksi.getColumnModel().getColumn(0).setPreferredWidth(20);
@@ -865,7 +863,7 @@ public final class Admin extends javax.swing.JFrame {
                 btn_filterActionPerformed(evt);
             }
         });
-        bg_transaksi.add(btn_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 110, 40));
+        bg_transaksi.add(btn_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 110, 40));
 
         btn_cetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_print_20px.png"))); // NOI18N
         btn_cetak.setText("Cetak Laporan");
@@ -875,23 +873,7 @@ public final class Admin extends javax.swing.JFrame {
             }
         });
         bg_transaksi.add(btn_cetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 570, 160, 40));
-        bg_transaksi.add(txt_keyword, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 200, 40));
-
-        dc_tanggal_rekap.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                dc_tanggal_rekapPropertyChange(evt);
-            }
-        });
-        bg_transaksi.add(dc_tanggal_rekap, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 190, 40));
-
-        btn_rekap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_filter_20px.png"))); // NOI18N
-        btn_rekap.setText("Rekap");
-        btn_rekap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_rekapActionPerformed(evt);
-            }
-        });
-        bg_transaksi.add(btn_rekap, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 110, 40));
+        bg_transaksi.add(txt_keyword, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 200, 40));
 
         btn_rekap1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_sync_25px.png"))); // NOI18N
         btn_rekap1.addActionListener(new java.awt.event.ActionListener() {
@@ -899,7 +881,7 @@ public final class Admin extends javax.swing.JFrame {
                 btn_rekap1ActionPerformed(evt);
             }
         });
-        bg_transaksi.add(btn_rekap1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 60, 40));
+        bg_transaksi.add(btn_rekap1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 60, 40));
 
         dc_tanggal_sampai.setToolTipText("range - sampai");
         dc_tanggal_sampai.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -907,7 +889,7 @@ public final class Admin extends javax.swing.JFrame {
                 dc_tanggal_sampaiPropertyChange(evt);
             }
         });
-        bg_transaksi.add(dc_tanggal_sampai, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 200, 40));
+        bg_transaksi.add(dc_tanggal_sampai, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 200, 40));
 
         dc_tanggal_dari.setToolTipText("range - dari");
         dc_tanggal_dari.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -915,11 +897,11 @@ public final class Admin extends javax.swing.JFrame {
                 dc_tanggal_dariPropertyChange(evt);
             }
         });
-        bg_transaksi.add(dc_tanggal_dari, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 190, 40));
+        bg_transaksi.add(dc_tanggal_dari, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 190, 40));
 
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_width_25px.png"))); // NOI18N
         jLabel40.setToolTipText("range");
-        bg_transaksi.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, -1, -1));
+        bg_transaksi.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
 
         btn_rekap_range.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_filter_20px.png"))); // NOI18N
         btn_rekap_range.setText("Rekap");
@@ -929,15 +911,7 @@ public final class Admin extends javax.swing.JFrame {
                 btn_rekap_rangeActionPerformed(evt);
             }
         });
-        bg_transaksi.add(btn_rekap_range, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 110, 40));
-
-        btn_rekap2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_sync_25px.png"))); // NOI18N
-        btn_rekap2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_rekap2ActionPerformed(evt);
-            }
-        });
-        bg_transaksi.add(btn_rekap2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 60, 40));
+        bg_transaksi.add(btn_rekap_range, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 110, 40));
 
         bodypane.add(bg_transaksi, "card4");
 
@@ -945,7 +919,7 @@ public final class Admin extends javax.swing.JFrame {
         bg_meja.setPreferredSize(new java.awt.Dimension(1100, 630));
         bg_meja.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBackground(new java.awt.Color(122, 72, 221));
+        jPanel4.setBackground(new java.awt.Color(64, 43, 100));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -977,7 +951,7 @@ public final class Admin extends javax.swing.JFrame {
         tbl_data_meja.setGridColor(new java.awt.Color(255, 255, 255));
         tbl_data_meja.setRowHeight(25);
         tbl_data_meja.setRowMargin(5);
-        tbl_data_meja.setSelectionBackground(new java.awt.Color(122, 72, 221));
+        tbl_data_meja.setSelectionBackground(new java.awt.Color(64, 43, 100));
         tbl_data_meja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_data_mejaMouseClicked(evt);
@@ -1005,6 +979,7 @@ public final class Admin extends javax.swing.JFrame {
         });
         bg_meja.add(btn_hapus_meja, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 100, 40));
 
+        txt_no_meja.setEditable(false);
         txt_no_meja.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bg_meja.add(txt_no_meja, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 180, 40));
 
@@ -1021,11 +996,11 @@ public final class Admin extends javax.swing.JFrame {
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel23.setText("Jumlah Meja :");
-        bg_meja.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, -1, -1));
+        bg_meja.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, -1));
 
         lbl_jumlah_meja.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_jumlah_meja.setText("Jumlah Meja :");
-        bg_meja.add(lbl_jumlah_meja, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, -1, -1));
+        bg_meja.add(lbl_jumlah_meja, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, -1, -1));
 
         btn_tambah_meja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_add_25px_1.png"))); // NOI18N
         btn_tambah_meja.setText("Tambah");
@@ -1042,7 +1017,7 @@ public final class Admin extends javax.swing.JFrame {
         bg_menu.setPreferredSize(new java.awt.Dimension(1100, 630));
         bg_menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(122, 72, 221));
+        jPanel5.setBackground(new java.awt.Color(64, 43, 100));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -1074,7 +1049,7 @@ public final class Admin extends javax.swing.JFrame {
         tbl_data_menu.setGridColor(new java.awt.Color(255, 255, 255));
         tbl_data_menu.setRowHeight(25);
         tbl_data_menu.setRowMargin(5);
-        tbl_data_menu.setSelectionBackground(new java.awt.Color(122, 72, 221));
+        tbl_data_menu.setSelectionBackground(new java.awt.Color(64, 43, 100));
         tbl_data_menu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_data_menuMouseClicked(evt);
@@ -1100,7 +1075,7 @@ public final class Admin extends javax.swing.JFrame {
                 btn_hapus_menuActionPerformed(evt);
             }
         });
-        bg_menu.add(btn_hapus_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 100, 40));
+        bg_menu.add(btn_hapus_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 120, 40));
 
         txt_nama_menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_nama_menu.addActionListener(new java.awt.event.ActionListener() {
@@ -1176,12 +1151,9 @@ public final class Admin extends javax.swing.JFrame {
         });
         bg_menu.add(btn_upload_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 130, 40));
 
+        txt_path_menu.setEditable(false);
         txt_path_menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        bg_menu.add(txt_path_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 350, 40));
-
-        btn_refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_repeat_25px.png"))); // NOI18N
-        btn_refresh.setToolTipText("Refersh / Kosongkan fiekd");
-        bg_menu.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 140, -1, -1));
+        bg_menu.add(txt_path_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 540, 40));
 
         bodypane.add(bg_menu, "card2");
 
@@ -1613,7 +1585,8 @@ public final class Admin extends javax.swing.JFrame {
 
     private void btn_filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_filterActionPerformed
         // TODO add your handling code here:
-        String sql = "select * from detailtransaksi where nama_pembeli LIKE '%" + txt_keyword.getText() + "%' OR nama_toko LIKE '%" + txt_keyword.getText() + "%'";
+        String sql = "select * from detailtransaksi where nama_pembeli LIKE '%" + txt_keyword.getText() + 
+                "%' OR nama_toko LIKE '%" + txt_keyword.getText() + "%'";
         modelTransaksi.getDataVector().removeAllElements();
         modelTransaksi.fireTableDataChanged();
         try {
@@ -1635,50 +1608,12 @@ public final class Admin extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btn_filterActionPerformed
-
-    private void btn_rekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rekapActionPerformed
-        // TODO add your handling code here:
-        String sql = "select * from detailtransaksi where tgl_transaksi='" + tanggal_rekap + "'";
-        modelTransaksi.getDataVector().removeAllElements();
-        modelTransaksi.fireTableDataChanged();
-        try {
-            Statement stat = conn.prepareStatement(sql);
-            res = stat.executeQuery(sql);
-            while (res.next()) {
-                Object[] o = new Object[7];
-                o[0] = res.getString("id_detailTransaksi");
-                o[1] = res.getString("nama_pembeli");
-                o[2] = res.getString("nama_toko");
-                o[3] = res.getString("nama_menu");
-                o[4] = res.getString("jumlah");
-                o[5] = res.getString("total_bayar");
-                o[6] = res.getString("tgl_transaksi");
-                modelTransaksi.addRow(o);
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Tidak ada data");
-            System.out.println(e.getMessage());
-        }
-    }//GEN-LAST:event_btn_rekapActionPerformed
     private String tanggal_rekap;
-    private void dc_tanggal_rekapPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dc_tanggal_rekapPropertyChange
-        // TODO add your handling code here:
-        try {
-            if (dc_tanggal_rekap.getDate() != null) {
-                String pattern = "dd/MM/yyyy";
-                SimpleDateFormat format = new SimpleDateFormat(pattern);
-                tanggal_rekap = String.valueOf(format.format(dc_tanggal_rekap.getDate()));
-            }
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_dc_tanggal_rekapPropertyChange
-
     private void btn_rekap1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rekap1ActionPerformed
         // TODO add your handling code here:
         loadDataTransaksi();
         dc_tanggal_dari.setCalendar(null);
         dc_tanggal_sampai.setCalendar(null);
-        dc_tanggal_rekap.setCalendar(null);
     }//GEN-LAST:event_btn_rekap1ActionPerformed
 
     private void cb_toko_2PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cb_toko_2PopupMenuWillBecomeInvisible
@@ -1777,14 +1712,6 @@ public final class Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_rekap_rangeActionPerformed
 
-    private void btn_rekap2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rekap2ActionPerformed
-        // TODO add your handling code here:
-        loadDataTransaksi();
-        dc_tanggal_rekap.setCalendar(null);
-        dc_tanggal_dari.setCalendar(null);
-        dc_tanggal_sampai.setCalendar(null);
-    }//GEN-LAST:event_btn_rekap2ActionPerformed
-
     private void btn_data_menu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_data_menu1MousePressed
         // TODO add your handling code here:
         int i = JOptionPane.showConfirmDialog(this, "Apakah kamu ingin keluar ?", "Mau kemana", JOptionPane.YES_NO_OPTION);
@@ -1851,10 +1778,7 @@ public final class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btn_hapus;
     private javax.swing.JButton btn_hapus_meja;
     private javax.swing.JButton btn_hapus_menu;
-    private javax.swing.JLabel btn_refresh;
-    private javax.swing.JButton btn_rekap;
     private javax.swing.JButton btn_rekap1;
-    private javax.swing.JButton btn_rekap2;
     private javax.swing.JButton btn_rekap_range;
     private javax.swing.JButton btn_tambah_meja;
     private javax.swing.JButton btn_tambah_menu;
@@ -1866,7 +1790,6 @@ public final class Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_status_meja;
     private javax.swing.JComboBox<String> cb_toko_2;
     private com.toedter.calendar.JDateChooser dc_tanggal_dari;
-    private com.toedter.calendar.JDateChooser dc_tanggal_rekap;
     private com.toedter.calendar.JDateChooser dc_tanggal_sampai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1879,7 +1802,6 @@ public final class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1904,6 +1826,7 @@ public final class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

@@ -38,7 +38,6 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public final class User extends javax.swing.JFrame {
 
-    private final DefaultTableModel modelMeja;
     private final Connection conn;
     private Statement stat;
     private ResultSet res;
@@ -50,11 +49,6 @@ public final class User extends javax.swing.JFrame {
         initComponents();
         // koneksi
         conn = koneksi.Koneksi.cekKoneksi();
-
-        modelMeja = new DefaultTableModel();
-        modelMeja.addColumn("NO MEJA");
-        modelMeja.addColumn("STATUS");
-        tbl_data_meja.setModel(modelMeja);
 
         modelPesanan = new DefaultTableModel();
         modelPesanan.addColumn("TOKO");
@@ -83,11 +77,6 @@ public final class User extends javax.swing.JFrame {
     public User(String no_data, String[] data) {
         initComponents();
         conn = koneksi.Koneksi.cekKoneksi();
-
-        modelMeja = new DefaultTableModel();
-        modelMeja.addColumn("NO MEJA");
-        modelMeja.addColumn("STATUS");
-        tbl_data_meja.setModel(modelMeja);
 
         modelPesanan = new DefaultTableModel();
         modelPesanan.addColumn("TOKO");
@@ -143,23 +132,77 @@ public final class User extends javax.swing.JFrame {
     }
 
     private void loadDataMeja() {
-        modelMeja.getDataVector().removeAllElements();
-        modelMeja.fireTableDataChanged();
+        Color textWhite = new Color(255, 255, 255);
+        Color avColor = new Color(235, 235, 235);
+        Color notavColor = new Color(54, 33, 89);
+
         try {
             String sql = "select * from meja";
             stat = conn.createStatement();
             res = stat.executeQuery(sql);
 
-            while (res.next()) {
-                Object[] o = new Object[2];
-                o[0] = res.getString("meja");
-                o[1] = res.getString("status");
-                modelMeja.addRow(o);
+            if (res.next() && res.getString("status").equals("available")) {
+                pn1.setBackground(avColor);
+            } else {
+                pn1.setBackground(notavColor);
+                lbl1.setForeground(textWhite);
             }
-
-            lbl_jumlah_meja.setText(String.valueOf(tbl_data_meja.getRowCount()));
+            if (res.next() && res.getString("status").equals("available")) {
+                pn2.setBackground(avColor);
+            } else {
+                pn2.setBackground(notavColor);
+                lbl2.setForeground(textWhite);
+            }
+            if (res.next() && res.getString("status").equals("available")) {
+                pn3.setBackground(avColor);
+            } else {
+                pn3.setBackground(notavColor);
+                lbl3.setForeground(textWhite);
+            }
+            if (res.next() && res.getString("status").equals("available")) {
+                pn4.setBackground(avColor);
+            } else {
+                pn4.setBackground(notavColor);
+                lbl4.setForeground(textWhite);
+            }
+            if (res.next() && res.getString("status").equals("available")) {
+                pn5.setBackground(avColor);
+            } else {
+                pn5.setBackground(notavColor);
+                lbl5.setForeground(textWhite);
+            }
+            if (res.next() && res.getString("status").equals("available")) {
+                pn6.setBackground(avColor);
+            } else {
+                pn6.setBackground(notavColor);
+                lbl6.setForeground(textWhite);
+            }
+            if (res.next() && res.getString("status").equals("available")) {
+                pn7.setBackground(avColor);
+            } else {
+                pn7.setBackground(notavColor);
+                lbl7.setForeground(textWhite);
+            }
+            if (res.next() && res.getString("status").equals("available")) {
+                pn8.setBackground(avColor);
+            } else {
+                pn8.setBackground(notavColor);
+                lbl8.setForeground(textWhite);
+            }
+            if (res.next() && res.getString("status").equals("available")) {
+                pn9.setBackground(avColor);
+            } else {
+                pn9.setBackground(notavColor);
+                lbl9.setForeground(textWhite);
+            }
+            if (res.next() && res.getString("status").equals("available")) {
+                pn10.setBackground(avColor);
+            } else {
+                pn10.setBackground(notavColor);
+                lbl10.setForeground(textWhite);
+            }
         } catch (SQLException e) {
-            System.out.println("tidak ada data!");
+            System.out.println(e.getMessage());
         }
         try {
             String sql = "select * from meja where status='available'";
@@ -170,6 +213,16 @@ public final class User extends javax.swing.JFrame {
                 cb_no_meja.addItem(res.getString("meja"));
             }
         } catch (SQLException e) {
+        }
+        try {
+            String sql = "select count(*) as 'total' from meja";
+            stat = conn.createStatement();
+            res = stat.executeQuery(sql);
+            if (res.next()) {
+                lbl_jumlah_meja.setText(res.getString("total"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -193,10 +246,10 @@ public final class User extends javax.swing.JFrame {
         btn_pemesanan = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         btn_data_menu1 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         bodypane = new javax.swing.JPanel();
         bg_dashboard = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -204,10 +257,31 @@ public final class User extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tbl_data_meja = new javax.swing.JTable();
         lbl_jumlah_meja = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        pn1 = new javax.swing.JPanel();
+        lbl1 = new javax.swing.JLabel();
+        pn2 = new javax.swing.JPanel();
+        lbl2 = new javax.swing.JLabel();
+        pn3 = new javax.swing.JPanel();
+        lbl3 = new javax.swing.JLabel();
+        pn4 = new javax.swing.JPanel();
+        lbl4 = new javax.swing.JLabel();
+        pn5 = new javax.swing.JPanel();
+        lbl5 = new javax.swing.JLabel();
+        pn7 = new javax.swing.JPanel();
+        lbl7 = new javax.swing.JLabel();
+        pn9 = new javax.swing.JPanel();
+        lbl9 = new javax.swing.JLabel();
+        pn6 = new javax.swing.JPanel();
+        lbl6 = new javax.swing.JLabel();
+        pn8 = new javax.swing.JPanel();
+        lbl8 = new javax.swing.JLabel();
+        pn10 = new javax.swing.JPanel();
+        lbl10 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         bg_pemesanan = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -355,13 +429,6 @@ public final class User extends javax.swing.JFrame {
 
         sidepane.add(btn_pemesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_food_bar_50px_1.png"))); // NOI18N
-        jLabel2.setText("KMP");
-        sidepane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 290, -1));
-
         btn_data_menu1.setBackground(new java.awt.Color(64, 43, 100));
         btn_data_menu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -399,6 +466,9 @@ public final class User extends javax.swing.JFrame {
 
         sidepane.add(btn_data_menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, -1, -1));
 
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo_baru-removebg-preview.png"))); // NOI18N
+        sidepane.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 190, 70));
+
         main.add(sidepane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 630));
 
         bodypane.setBackground(new java.awt.Color(255, 255, 255));
@@ -408,7 +478,7 @@ public final class User extends javax.swing.JFrame {
         bg_dashboard.setPreferredSize(new java.awt.Dimension(1100, 630));
         bg_dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(122, 72, 221));
+        jPanel1.setBackground(new java.awt.Color(64, 43, 100));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -423,51 +493,271 @@ public final class User extends javax.swing.JFrame {
 
         bg_dashboard.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 810, 127));
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(122, 72, 221));
-        jLabel16.setText("\"Makan Dan Minum Dengan Bahagia\"");
-        bg_dashboard.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(64, 43, 100));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Jl. Kalimantan No.64, Krajan Timur, A");
+        bg_dashboard.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 780, 30));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(122, 72, 221));
-        jLabel20.setText("Kalimantan Meeting Point");
-        bg_dashboard.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
-
-        jScrollPane4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        tbl_data_meja.setAutoCreateRowSorter(true);
-        tbl_data_meja.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID", "NAMA TOKO", "FOTO"
-            }
-        ));
-        tbl_data_meja.setGridColor(new java.awt.Color(255, 255, 255));
-        tbl_data_meja.setRowHeight(25);
-        tbl_data_meja.setRowMargin(5);
-        tbl_data_meja.setSelectionBackground(new java.awt.Color(122, 72, 221));
-        tbl_data_meja.setShowVerticalLines(false);
-        tbl_data_meja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_data_mejaMouseClicked(evt);
-            }
-        });
-        jScrollPane4.setViewportView(tbl_data_meja);
-
-        bg_dashboard.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 740, 260));
+        jLabel20.setForeground(new java.awt.Color(64, 43, 100));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("KALIMANTAN MEETING POINT");
+        bg_dashboard.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 780, -1));
 
         lbl_jumlah_meja.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_jumlah_meja.setText("Jumlah Meja :");
-        bg_dashboard.add(lbl_jumlah_meja, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, -1));
+        bg_dashboard.add(lbl_jumlah_meja, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel12.setText("Jumlah Meja :");
-        bg_dashboard.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        bg_dashboard.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(64, 43, 100));
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("\"FOOD IS CULTURE, CRAVING AND IDENTITY\"");
+        bg_dashboard.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 780, -1));
+
+        lbl1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl1.setText("1");
+
+        javax.swing.GroupLayout pn1Layout = new javax.swing.GroupLayout(pn1);
+        pn1.setLayout(pn1Layout);
+        pn1Layout.setHorizontalGroup(
+            pn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pn1Layout.setVerticalGroup(
+            pn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        bg_dashboard.add(pn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 70, 70));
+
+        lbl2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl2.setText("2");
+
+        javax.swing.GroupLayout pn2Layout = new javax.swing.GroupLayout(pn2);
+        pn2.setLayout(pn2Layout);
+        pn2Layout.setHorizontalGroup(
+            pn2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pn2Layout.setVerticalGroup(
+            pn2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        bg_dashboard.add(pn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, -1, -1));
+
+        lbl3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl3.setText("3");
+
+        javax.swing.GroupLayout pn3Layout = new javax.swing.GroupLayout(pn3);
+        pn3.setLayout(pn3Layout);
+        pn3Layout.setHorizontalGroup(
+            pn3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl3, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pn3Layout.setVerticalGroup(
+            pn3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        bg_dashboard.add(pn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
+
+        lbl4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl4.setText("4");
+
+        javax.swing.GroupLayout pn4Layout = new javax.swing.GroupLayout(pn4);
+        pn4.setLayout(pn4Layout);
+        pn4Layout.setHorizontalGroup(
+            pn4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl4, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pn4Layout.setVerticalGroup(
+            pn4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl4, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        bg_dashboard.add(pn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, -1));
+
+        lbl5.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl5.setText("5");
+
+        javax.swing.GroupLayout pn5Layout = new javax.swing.GroupLayout(pn5);
+        pn5.setLayout(pn5Layout);
+        pn5Layout.setHorizontalGroup(
+            pn5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pn5Layout.setVerticalGroup(
+            pn5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl5, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        bg_dashboard.add(pn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 70, -1));
+
+        lbl7.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl7.setText("7");
+
+        javax.swing.GroupLayout pn7Layout = new javax.swing.GroupLayout(pn7);
+        pn7.setLayout(pn7Layout);
+        pn7Layout.setHorizontalGroup(
+            pn7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl7, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pn7Layout.setVerticalGroup(
+            pn7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl7, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        bg_dashboard.add(pn7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, -1, -1));
+
+        lbl9.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl9.setText("9");
+
+        javax.swing.GroupLayout pn9Layout = new javax.swing.GroupLayout(pn9);
+        pn9.setLayout(pn9Layout);
+        pn9Layout.setHorizontalGroup(
+            pn9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl9, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pn9Layout.setVerticalGroup(
+            pn9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl9, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        bg_dashboard.add(pn9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
+
+        lbl6.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl6.setText("6");
+
+        javax.swing.GroupLayout pn6Layout = new javax.swing.GroupLayout(pn6);
+        pn6.setLayout(pn6Layout);
+        pn6Layout.setHorizontalGroup(
+            pn6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl6, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pn6Layout.setVerticalGroup(
+            pn6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl6, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        bg_dashboard.add(pn6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
+
+        lbl8.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl8.setText("8");
+
+        javax.swing.GroupLayout pn8Layout = new javax.swing.GroupLayout(pn8);
+        pn8.setLayout(pn8Layout);
+        pn8Layout.setHorizontalGroup(
+            pn8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl8, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pn8Layout.setVerticalGroup(
+            pn8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl8, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        bg_dashboard.add(pn8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, -1, -1));
+
+        lbl10.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl10.setText("10");
+
+        javax.swing.GroupLayout pn10Layout = new javax.swing.GroupLayout(pn10);
+        pn10.setLayout(pn10Layout);
+        pn10Layout.setHorizontalGroup(
+            pn10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl10, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pn10Layout.setVerticalGroup(
+            pn10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl10, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        bg_dashboard.add(pn10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_filled_circle_25px_2.png"))); // NOI18N
+        jLabel2.setText("Not Available");
+        jLabel2.setIconTextGap(9);
+        bg_dashboard.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 560, 170, -1));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_filled_circle_25px_1.png"))); // NOI18N
+        jLabel15.setText("Available");
+        jLabel15.setIconTextGap(9);
+        bg_dashboard.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 170, -1));
 
         bodypane.add(bg_dashboard, "card2");
 
@@ -475,7 +765,7 @@ public final class User extends javax.swing.JFrame {
         bg_pemesanan.setPreferredSize(new java.awt.Dimension(1100, 630));
         bg_pemesanan.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(122, 72, 221));
+        jPanel2.setBackground(new java.awt.Color(64, 43, 100));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -523,7 +813,7 @@ public final class User extends javax.swing.JFrame {
         tbl_pesanan.setGridColor(new java.awt.Color(255, 255, 255));
         tbl_pesanan.setRowHeight(25);
         tbl_pesanan.setRowMargin(5);
-        tbl_pesanan.setSelectionBackground(new java.awt.Color(122, 72, 221));
+        tbl_pesanan.setSelectionBackground(new java.awt.Color(64, 43, 100));
         tbl_pesanan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_pesananMouseClicked(evt);
@@ -550,7 +840,7 @@ public final class User extends javax.swing.JFrame {
         tbl_data_menu.setGridColor(new java.awt.Color(255, 255, 255));
         tbl_data_menu.setRowHeight(25);
         tbl_data_menu.setRowMargin(5);
-        tbl_data_menu.setSelectionBackground(new java.awt.Color(122, 72, 221));
+        tbl_data_menu.setSelectionBackground(new java.awt.Color(64, 43, 100));
         tbl_data_menu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_data_menuMouseClicked(evt);
@@ -590,7 +880,7 @@ public final class User extends javax.swing.JFrame {
         bg_pembayaran.setPreferredSize(new java.awt.Dimension(1100, 630));
         bg_pembayaran.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(122, 72, 221));
+        jPanel3.setBackground(new java.awt.Color(64, 43, 100));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -622,17 +912,13 @@ public final class User extends javax.swing.JFrame {
         tbl_konfirmasi_pemesanan.setGridColor(new java.awt.Color(255, 255, 255));
         tbl_konfirmasi_pemesanan.setRowHeight(25);
         tbl_konfirmasi_pemesanan.setRowMargin(5);
-        tbl_konfirmasi_pemesanan.setSelectionBackground(new java.awt.Color(122, 72, 221));
-        tbl_konfirmasi_pemesanan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_konfirmasi_pemesananMouseClicked(evt);
-            }
-        });
+        tbl_konfirmasi_pemesanan.setSelectionBackground(new java.awt.Color(64, 43, 100));
         jScrollPane7.setViewportView(tbl_konfirmasi_pemesanan);
 
-        bg_pembayaran.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 740, 180));
+        bg_pembayaran.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 740, 300));
 
         btn_hapus_konfirmasi_pemesanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_delete_bin_25px.png"))); // NOI18N
+        btn_hapus_konfirmasi_pemesanan.setText("Hapus");
         btn_hapus_konfirmasi_pemesanan.setToolTipText("hapus list pesanan");
         btn_hapus_konfirmasi_pemesanan.setAlignmentY(0.0F);
         btn_hapus_konfirmasi_pemesanan.addActionListener(new java.awt.event.ActionListener() {
@@ -640,7 +926,7 @@ public final class User extends javax.swing.JFrame {
                 btn_hapus_konfirmasi_pemesananActionPerformed(evt);
             }
         });
-        bg_pembayaran.add(btn_hapus_konfirmasi_pemesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 240, 50, 40));
+        bg_pembayaran.add(btn_hapus_konfirmasi_pemesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 570, 110, 40));
 
         btn_konfirmasi_pemesanan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_konfirmasi_pemesanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_refund_25px_1.png"))); // NOI18N
@@ -651,22 +937,22 @@ public final class User extends javax.swing.JFrame {
                 btn_konfirmasi_pemesananActionPerformed(evt);
             }
         });
-        bg_pembayaran.add(btn_konfirmasi_pemesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 270, 40));
+        bg_pembayaran.add(btn_konfirmasi_pemesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 270, 90));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setText("Pembeli");
-        bg_pembayaran.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        bg_pembayaran.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
-        bg_pembayaran.add(cb_no_meja, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 160, 40));
+        bg_pembayaran.add(cb_no_meja, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 160, 40));
 
         lbl_total_bayar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_total_bayar.setText("0");
         bg_pembayaran.add(lbl_total_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 580, -1, -1));
-        bg_pembayaran.add(txt_nama_pembeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 160, 40));
+        bg_pembayaran.add(txt_nama_pembeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 160, 40));
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel21.setText("No. Meja");
-        bg_pembayaran.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        bg_pembayaran.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel22.setText("TOTAL BAYAR : ");
@@ -749,10 +1035,6 @@ public final class User extends javax.swing.JFrame {
         bodypane.revalidate();
     }//GEN-LAST:event_btn_pemesananMousePressed
 
-    private void tbl_data_mejaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_data_mejaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbl_data_mejaMouseClicked
-
     private void cb_nama_tokoPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cb_nama_tokoPopupMenuWillBecomeInvisible
         // TODO add your handling code here:
         loadDataMenu();
@@ -775,40 +1057,55 @@ public final class User extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tbl_data_menuMouseClicked
 
+    // cek data pesanan
+    private boolean cekDataPesanan() {
+        boolean status = false;
+        for (int j = 0; j < tbl_pesanan.getRowCount(); j++) {
+            if (tbl_pesanan.getValueAt(j, 3).toString().equals("")) {
+                status = true;
+            } else {
+                status = false;
+            }
+        }
+        return status;
+    }
+
     private void btn_konfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_konfirmasiActionPerformed
         // TODO add your handling code here:
         loadDataMeja();
-        if (tbl_pesanan.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(this, "Lakukan pemesanan terlebih dahulu");
+        if (cekDataPesanan() == true) {
+            JOptionPane.showMessageDialog(this, "Isi jumlah dulu");
         } else {
-            int conf = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ? ", "Perhatikan!", JOptionPane.YES_NO_OPTION);
-            if (conf == 0) {
-                int rows = tbl_pesanan.getRowCount();
-                Object[] os = new Object[5];
-                for (int i = 0; i < rows; i++) {
-                    os[0] = modelPesanan.getValueAt(i, 0);
-                    os[1] = modelPesanan.getValueAt(i, 1);
-                    os[2] = modelPesanan.getValueAt(i, 2);
-                    os[3] = modelPesanan.getValueAt(i, 3);
-                    os[4] = modelPesanan.getValueAt(i, 4);
-                    modelKonfirmasiPemesanan.addRow(os);
+            if (tbl_pesanan.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Lakukan pemesanan terlebih dahulu");
+            } else {
+                int conf = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ? ", "Perhatikan!", JOptionPane.YES_NO_OPTION);
+                if (conf == 0) {
+                    int rows = tbl_pesanan.getRowCount();
+                    Object[] os = new Object[5];
+                    for (int i = 0; i < rows; i++) {
+                        os[0] = modelPesanan.getValueAt(i, 0);
+                        os[1] = modelPesanan.getValueAt(i, 1);
+                        os[2] = modelPesanan.getValueAt(i, 2);
+                        os[3] = modelPesanan.getValueAt(i, 3);
+                        os[4] = modelPesanan.getValueAt(i, 4);
+                        modelKonfirmasiPemesanan.addRow(os);
+                    }
+                    setColor(btn_pembayaran);
+                    resetColor(btn_pemesanan);
+                    resetColor(btn_dahsboard);
+
+                    // panel
+                    bodypane.removeAll();
+                    bodypane.repaint();
+                    bodypane.revalidate();
+
+                    bodypane.add(bg_pembayaran);
+                    bodypane.repaint();
+                    bodypane.revalidate();
                 }
             }
-
-            setColor(btn_pembayaran);
-            resetColor(btn_pemesanan);
-            resetColor(btn_dahsboard);
-
-            // panel
-            bodypane.removeAll();
-            bodypane.repaint();
-            bodypane.revalidate();
-
-            bodypane.add(bg_pembayaran);
-            bodypane.repaint();
-            bodypane.revalidate();
         }
-
     }//GEN-LAST:event_btn_konfirmasiActionPerformed
 
     private void tbl_pesananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_pesananMouseClicked
@@ -821,6 +1118,12 @@ public final class User extends javax.swing.JFrame {
         String jumlah = modelPesanan.getValueAt(i, 3).toString();
 
         String newJumlah = JOptionPane.showInputDialog(null, "Menu : " + menu + "\nHarga : " + harga + "\nMasukan jumlah : " + jumlah);
+        if (newJumlah.matches("[A-Za-z]*")) {
+            JOptionPane.showMessageDialog(this, "Jumlah harus angka");
+            newJumlah = "";
+            newJumlah = JOptionPane.showInputDialog(null, "Menu : " + menu + "\nHarga : " + harga + "\nMasukan jumlah : " + jumlah);
+        }
+
         int totalBayar = Integer.parseInt(newJumlah) * Integer.parseInt(harga);
 
         if (newJumlah.length() == 0) {
@@ -836,18 +1139,17 @@ public final class User extends javax.swing.JFrame {
 
     private void btn_hapus_listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapus_listActionPerformed
         // TODO add your handling code here:
-        int conf = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ? ", "Perhatikan!", JOptionPane.YES_NO_OPTION);
-        if (conf == 0) {
-            int i = tbl_pesanan.getSelectedRow();
-            modelPesanan.removeRow(i);
-            JOptionPane.showMessageDialog(this, "Pesanan dihapus");
+        if (tbl_pesanan.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "Tabel pesanan kosong!");
+        } else {
+            int conf = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ? ", "Perhatikan!", JOptionPane.YES_NO_OPTION);
+            if (conf == 0) {
+                int i = tbl_pesanan.getSelectedRow();
+                modelPesanan.removeRow(i);
+                JOptionPane.showMessageDialog(this, "Pesanan dihapus");
+            }
         }
     }//GEN-LAST:event_btn_hapus_listActionPerformed
-
-    private void tbl_konfirmasi_pemesananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_konfirmasi_pemesananMouseClicked
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_tbl_konfirmasi_pemesananMouseClicked
 
     private void btn_hapus_konfirmasi_pemesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapus_konfirmasi_pemesananActionPerformed
         // TODO add your handling code here:
@@ -1018,6 +1320,7 @@ public final class User extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -1026,6 +1329,8 @@ public final class User extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
@@ -1038,15 +1343,33 @@ public final class User extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lbl10;
+    private javax.swing.JLabel lbl2;
+    private javax.swing.JLabel lbl3;
+    private javax.swing.JLabel lbl4;
+    private javax.swing.JLabel lbl5;
+    private javax.swing.JLabel lbl6;
+    private javax.swing.JLabel lbl7;
+    private javax.swing.JLabel lbl8;
+    private javax.swing.JLabel lbl9;
     private javax.swing.JLabel lbl_jumlah_meja;
     private javax.swing.JLabel lbl_total_bayar;
     private javax.swing.JPanel main;
+    private javax.swing.JPanel pn1;
+    private javax.swing.JPanel pn10;
+    private javax.swing.JPanel pn2;
+    private javax.swing.JPanel pn3;
+    private javax.swing.JPanel pn4;
+    private javax.swing.JPanel pn5;
+    private javax.swing.JPanel pn6;
+    private javax.swing.JPanel pn7;
+    private javax.swing.JPanel pn8;
+    private javax.swing.JPanel pn9;
     private javax.swing.JPanel sidepane;
-    private javax.swing.JTable tbl_data_meja;
     private javax.swing.JTable tbl_data_menu;
     public javax.swing.JTable tbl_konfirmasi_pemesanan;
     public javax.swing.JTable tbl_pesanan;
