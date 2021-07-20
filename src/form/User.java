@@ -750,12 +750,12 @@ public final class User extends javax.swing.JFrame {
         bg_dashboard.add(pn10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_filled_circle_25px_2.png"))); // NOI18N
-        jLabel2.setText("Not Available");
+        jLabel2.setText("Available");
         jLabel2.setIconTextGap(9);
-        bg_dashboard.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 560, 170, -1));
+        bg_dashboard.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 560, 170, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_filled_circle_25px_1.png"))); // NOI18N
-        jLabel15.setText("Available");
+        jLabel15.setText("Not Available");
         jLabel15.setIconTextGap(9);
         bg_dashboard.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 170, -1));
 
@@ -1061,10 +1061,8 @@ public final class User extends javax.swing.JFrame {
     private boolean cekDataPesanan() {
         boolean status = false;
         for (int j = 0; j < tbl_pesanan.getRowCount(); j++) {
-            if (tbl_pesanan.getValueAt(j, 3).toString().equals("")) {
+            if (tbl_pesanan.getValueAt(j, 3).toString().equals("") || Integer.parseInt( tbl_pesanan.getValueAt(j, 3).toString()) == 0) {
                 status = true;
-            } else {
-                status = false;
             }
         }
         return status;
@@ -1123,6 +1121,9 @@ public final class User extends javax.swing.JFrame {
             newJumlah = "";
             newJumlah = JOptionPane.showInputDialog(null, "Menu : " + menu + "\nHarga : " + harga + "\nMasukan jumlah : " + jumlah);
         }
+        if (Integer.parseInt(newJumlah) == 0) {
+            newJumlah = "0";
+        }
 
         int totalBayar = Integer.parseInt(newJumlah) * Integer.parseInt(harga);
 
@@ -1159,10 +1160,17 @@ public final class User extends javax.swing.JFrame {
         } else {
             int conf = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ? ", "Perhatikan!", JOptionPane.YES_NO_OPTION);
             if (conf == 0) {
+                
                 modelKonfirmasiPemesanan.removeRow(i);
                 JOptionPane.showMessageDialog(this, "Pesanan dihapus");
             }
         }
+        int total = 0;
+        for (int k = 0; k < tbl_konfirmasi_pemesanan.getRowCount(); k++) {
+            int harga = Integer.parseInt((String) modelKonfirmasiPemesanan.getValueAt(k, 4));
+            total += harga;
+        }
+        lbl_total_bayar.setText(String.valueOf(total));
     }//GEN-LAST:event_btn_hapus_konfirmasi_pemesananActionPerformed
 
     static int no_meja_rev;
