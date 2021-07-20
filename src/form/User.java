@@ -319,6 +319,7 @@ public final class User extends javax.swing.JFrame {
         sidepane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_dahsboard.setBackground(new java.awt.Color(85, 65, 118));
+        btn_dahsboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_dahsboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_dahsboardMousePressed(evt);
@@ -332,6 +333,7 @@ public final class User extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Dashboard");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout btn_dahsboardLayout = new javax.swing.GroupLayout(btn_dahsboard);
         btn_dahsboard.setLayout(btn_dahsboardLayout);
@@ -356,6 +358,7 @@ public final class User extends javax.swing.JFrame {
         sidepane.add(btn_dahsboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
 
         btn_pembayaran.setBackground(new java.awt.Color(64, 43, 100));
+        btn_pembayaran.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_pembayaran.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_pembayaranMousePressed(evt);
@@ -364,11 +367,13 @@ public final class User extends javax.swing.JFrame {
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_checkout_25px.png"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Pembayaran");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout btn_pembayaranLayout = new javax.swing.GroupLayout(btn_pembayaran);
         btn_pembayaran.setLayout(btn_pembayaranLayout);
@@ -393,6 +398,7 @@ public final class User extends javax.swing.JFrame {
         sidepane.add(btn_pembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, -1, -1));
 
         btn_pemesanan.setBackground(new java.awt.Color(64, 43, 100));
+        btn_pemesanan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_pemesanan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_pemesananMousePressed(evt);
@@ -401,11 +407,13 @@ public final class User extends javax.swing.JFrame {
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_add_25px.png"))); // NOI18N
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Pemesanan");
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout btn_pemesananLayout = new javax.swing.GroupLayout(btn_pemesanan);
         btn_pemesanan.setLayout(btn_pemesananLayout);
@@ -430,6 +438,7 @@ public final class User extends javax.swing.JFrame {
         sidepane.add(btn_pemesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
 
         btn_data_menu1.setBackground(new java.awt.Color(64, 43, 100));
+        btn_data_menu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_data_menu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_data_menu1MousePressed(evt);

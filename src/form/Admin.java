@@ -42,6 +42,13 @@ import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.data.jdbc.JDBCCategoryDataset;
 
 /**
  *
@@ -101,6 +108,8 @@ public final class Admin extends javax.swing.JFrame {
         loadDataTransaksi();
         // load data total order
         loadBadge();
+        // id toko otomatis
+        id_toko_otomatis();
     }
 
     private void loadDataTransaksi() {
@@ -181,6 +190,7 @@ public final class Admin extends javax.swing.JFrame {
         tbl_data_transaksi_per_toko = new javax.swing.JTable();
         lbl_total_pendapatan = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
+        btn_statistik = new javax.swing.JButton();
         bg_toko = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -197,6 +207,7 @@ public final class Admin extends javax.swing.JFrame {
         btn_upload = new javax.swing.JButton();
         btn_hapus = new javax.swing.JButton();
         txt_nama_toko = new javax.swing.JTextField();
+        btn_tambah_menu1 = new javax.swing.JButton();
         bg_transaksi = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -307,11 +318,13 @@ public final class Admin extends javax.swing.JFrame {
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_table_25px.png"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Data Meja");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout btn_data_mejaLayout = new javax.swing.GroupLayout(btn_data_meja);
         btn_data_meja.setLayout(btn_data_mejaLayout);
@@ -388,6 +401,7 @@ public final class Admin extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Dashboard");
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout btn_dahsboardLayout = new javax.swing.GroupLayout(btn_dahsboard);
         btn_dahsboard.setLayout(btn_dahsboardLayout);
@@ -426,6 +440,7 @@ public final class Admin extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Data Transaksi");
+        jLabel19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout btn_data_transaksiLayout = new javax.swing.GroupLayout(btn_data_transaksi);
         btn_data_transaksi.setLayout(btn_data_transaksiLayout);
@@ -644,7 +659,7 @@ public final class Admin extends javax.swing.JFrame {
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
-        bg_dashboard.add(cb_toko_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 180, 40));
+        bg_dashboard.add(cb_toko_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 170, 40));
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_shop_25px_4.png"))); // NOI18N
@@ -680,11 +695,21 @@ public final class Admin extends javax.swing.JFrame {
         lbl_total_pendapatan.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lbl_total_pendapatan.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbl_total_pendapatan.setText("-");
-        bg_dashboard.add(lbl_total_pendapatan, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 150, 40));
+        bg_dashboard.add(lbl_total_pendapatan, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 130, 40));
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel37.setText("Total Pendapatan :");
-        bg_dashboard.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, -1, 40));
+        bg_dashboard.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, -1, 40));
+
+        btn_statistik.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_statistik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_plot_25px.png"))); // NOI18N
+        btn_statistik.setToolTipText("statustik penjualan");
+        btn_statistik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_statistikActionPerformed(evt);
+            }
+        });
+        bg_dashboard.add(btn_statistik, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, 40, 40));
 
         bodypane.add(bg_dashboard, "card2");
 
@@ -799,7 +824,7 @@ public final class Admin extends javax.swing.JFrame {
                 btn_hapusActionPerformed(evt);
             }
         });
-        bg_toko.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 100, 40));
+        bg_toko.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 130, 40));
 
         txt_nama_toko.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_nama_toko.addActionListener(new java.awt.event.ActionListener() {
@@ -808,6 +833,15 @@ public final class Admin extends javax.swing.JFrame {
             }
         });
         bg_toko.add(txt_nama_toko, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 180, 40));
+
+        btn_tambah_menu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_add_25px_1.png"))); // NOI18N
+        btn_tambah_menu1.setText("Tambah");
+        btn_tambah_menu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tambah_menu1ActionPerformed(evt);
+            }
+        });
+        bg_toko.add(btn_tambah_menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 130, 40));
 
         bodypane.add(bg_toko, "card3");
 
@@ -1190,7 +1224,7 @@ public final class Admin extends javax.swing.JFrame {
         resetColor(btn_data_meja);
         resetColor(btn_data_transaksi);
         resetColor(btn_data_menu);
-
+        loadDataToko();
         // panel
         bodypane.removeAll();
         bodypane.repaint();
@@ -1239,10 +1273,11 @@ public final class Admin extends javax.swing.JFrame {
             pst.setString(2, cb_kategori.getSelectedItem().toString());
             pst.setBytes(3, photo);
             pst.setString(4, txt_id_toko.getText());
-
             pst.execute();
             JOptionPane.showMessageDialog(this, "Update informasi toko berhasil!");
             loadDataToko();
+            id_toko_otomatis();
+            resetFieldToko();
         } catch (HeadlessException | SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -1300,6 +1335,8 @@ public final class Admin extends javax.swing.JFrame {
                 stat.executeUpdate(sql);
                 JOptionPane.showMessageDialog(this, "Hapus data berhasil!");
                 loadDataToko();
+                id_toko_otomatis();
+                resetFieldToko();
             } catch (HeadlessException | SQLException e) {
                 JOptionPane.showMessageDialog(this, "Hapus data gagal!");
                 System.err.println(e.getMessage());
@@ -1314,6 +1351,10 @@ public final class Admin extends javax.swing.JFrame {
         resetColor(btn_data_meja);
         resetColor(btn_data_transaksi);
         resetColor(btn_data_menu);
+        loadDataToko();
+        loadBadge();
+        loadDataTransaksi();
+        loadDataMenu();
 
         // panel
         bodypane.removeAll();
@@ -1394,7 +1435,8 @@ public final class Admin extends javax.swing.JFrame {
         resetColor(btn_dahsboard);
         resetColor(btn_data_transaksi);
         resetColor(btn_data_meja);
-
+        loadDataMenu();
+        loadDataNamaToko();
         // panel
         bodypane.removeAll();
         bodypane.repaint();
@@ -1562,31 +1604,31 @@ public final class Admin extends javax.swing.JFrame {
 
     private void btn_cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetakActionPerformed
         // TODO add your handling code here:
-            try {
-                JasperReport jr;
-                JasperPrint jp;
-                JasperDesign jd;
+        try {
+            JasperReport jr;
+            JasperPrint jp;
+            JasperDesign jd;
 
-                jd = JRXmlLoader.load("E:\\WSIBD_nisa_COBA LAGI\\WSIBD-LAST-TASK-main\\src\\report\\rekapPenjualan.jrxml");
-                String sql = "SELECT * FROM `transaksi`, `detailtransaksi` "
-                        + "WHERE transaksi.id_detailTransaksi = detailtransaksi.id_detailTransaksi "
-                        + "AND (detailtransaksi.tgl_transaksi "
-                        + "BETWEEN '" + tanggal_dari + "' AND '" + tanggal_sampai + "')";
-                JRDesignQuery newQuery = new JRDesignQuery();
-                newQuery.setText(sql);
-                jd.setQuery(newQuery);
-                jr = JasperCompileManager.compileReport(jd);
-                jp = JasperFillManager.fillReport(jr, null, conn);
-                JasperViewer.viewReport(jp, false);
-            } catch (JRException ex) {
-                Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            jd = JRXmlLoader.load("E:\\WSIBD_nisa_COBA LAGI\\WSIBD-LAST-TASK-main\\src\\report\\rekapPenjualan.jrxml");
+            String sql = "SELECT * FROM `transaksi`, `detailtransaksi` "
+                    + "WHERE transaksi.id_detailTransaksi = detailtransaksi.id_detailTransaksi "
+                    + "AND (detailtransaksi.tgl_transaksi "
+                    + "BETWEEN '" + tanggal_dari + "' AND '" + tanggal_sampai + "')";
+            JRDesignQuery newQuery = new JRDesignQuery();
+            newQuery.setText(sql);
+            jd.setQuery(newQuery);
+            jr = JasperCompileManager.compileReport(jd);
+            jp = JasperFillManager.fillReport(jr, null, conn);
+            JasperViewer.viewReport(jp, false);
+        } catch (JRException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_cetakActionPerformed
 
     private void btn_filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_filterActionPerformed
         // TODO add your handling code here:
-        String sql = "select * from detailtransaksi where nama_pembeli LIKE '%" + txt_keyword.getText() + 
-                "%' OR nama_toko LIKE '%" + txt_keyword.getText() + "%'";
+        String sql = "select * from detailtransaksi where nama_pembeli LIKE '%" + txt_keyword.getText()
+                + "%' OR nama_toko LIKE '%" + txt_keyword.getText() + "%'";
         modelTransaksi.getDataVector().removeAllElements();
         modelTransaksi.fireTableDataChanged();
         try {
@@ -1721,6 +1763,92 @@ public final class Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_data_menu1MousePressed
 
+    private void btn_statistikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_statistikActionPerformed
+        // TODO add your handling code here:
+        try {
+            String query = "SELECT tgl_transaksi, COUNT(id_transaksi) as 'total' "
+                    + "FROM transaksi GROUP BY tgl_transaksi";
+            JDBCCategoryDataset dataset = new JDBCCategoryDataset(conn, query);
+            JFreeChart chart = ChartFactory.createLineChart("Statistik", "Tanggal Transaksi", "Total Transaksi", dataset, PlotOrientation.VERTICAL, false, true, true);
+            BarRenderer renderer = null;
+            CategoryPlot plot = null;
+            renderer = new BarRenderer();
+            ChartFrame frame = new ChartFrame("Statistik Penjualan", chart);
+            frame.setVisible(true);
+            frame.pack();
+            setLocationRelativeTo(null);
+            frame.setSize(1060, 630);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btn_statistikActionPerformed
+    private static String kode_toko, kode;
+    private void id_toko_otomatis() {
+        String sql = "select * from toko order by id_toko desc";
+        try {
+            Statement stat = conn.createStatement();
+            res = stat.executeQuery(sql);
+            if (res.next()) {
+                kode = res.getString("id_toko").substring(1);
+                String autoNumber = "" + (Integer.parseInt(kode) + 1);
+                String nol = "";
+
+                switch (autoNumber.length()) {
+                    case 1:
+                        nol = "00";
+                        break;
+                    case 2:
+                        nol = "0";
+                        break;
+                    case 3:
+                        nol = "";
+                        break;
+                    default:
+                        break;
+                }
+
+                kode_toko = "T" + nol + autoNumber;
+                System.out.println(kode_toko);
+            } else {
+                kode_toko = "T001";
+            }
+        } catch (NumberFormatException | SQLException e) {
+            System.out.println("tidak ada data yang masuk");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void resetFieldToko() {
+        txt_nama_toko.setText("");
+        cb_kategori.setSelectedIndex(0);
+        txt_path.setText("");
+        bg_profil_toko.setText(null);
+    }
+    
+    private void btn_tambah_menu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambah_menu1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            String sql = "insert into toko(id_toko, nama_toko, kategori, foto_toko) "
+                    + "values(?,?,?,?)";
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, kode_toko);
+            pst.setString(2, txt_nama_toko.getText());
+            pst.setString(3, cb_kategori.getSelectedItem().toString());
+            pst.setBytes(4, photo);
+
+            pst.execute();
+            loadDataToko();
+            resetFieldToko();
+            JOptionPane.showMessageDialog(this, "Insert informasi toko berhasil!");
+            refreshMenu();
+            loadDataMenu();
+            id_toko_otomatis();
+        } catch (HeadlessException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btn_tambah_menu1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1780,8 +1908,10 @@ public final class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btn_hapus_menu;
     private javax.swing.JButton btn_rekap1;
     private javax.swing.JButton btn_rekap_range;
+    private javax.swing.JButton btn_statistik;
     private javax.swing.JButton btn_tambah_meja;
     private javax.swing.JButton btn_tambah_menu;
+    private javax.swing.JButton btn_tambah_menu1;
     private javax.swing.JButton btn_upload;
     private javax.swing.JButton btn_upload_menu;
     private javax.swing.JComboBox<String> cb_kategori;
